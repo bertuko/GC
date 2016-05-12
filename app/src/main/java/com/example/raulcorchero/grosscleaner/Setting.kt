@@ -24,6 +24,7 @@ class Setting : AppCompatActivity() {
                                     "Con cónyugue (ingresos de este <1500 euros al año",
                                     "Otros")
 
+
         val s = findViewById(R.id.cmbSituacion) as Spinner
         val adapter = ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner)
