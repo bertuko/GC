@@ -41,10 +41,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Salario Bruto:"
+                android:text="@string/SalarioBruto"
                 android:id="@+id/lblBruto"
                 android:layout_column="0"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:singleLine="false" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Pagas:"
+                    android:text="@string/Pagas"
                     android:id="@+id/lblPagas"
                     android:layout_gravity="center"
                     android:layout_marginLeft="33dp" />
