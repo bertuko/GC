@@ -14,7 +14,6 @@ class Setting : AppCompatActivity() {
     }
 
     fun inicializador() {
-
         if(tbIRPF.isActivated) {
             txtIRPFMan.isEnabled = true
         }else{
