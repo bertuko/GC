@@ -8,4 +8,6 @@
     <string name="Sit3Long">Situación 3: Perceptor cuya situación familiar es distinta de las dos anteriores o no desee manifestarla .</string>
     <string name="SalarioBruto">Salario Bruto: </string>
     <string name="Pagas">Pagas: </string>
+    <string name="btnCalcular">Calcular</string>
+    <string name="SalarioNeto">Salario Neto:</string>
 </resources>

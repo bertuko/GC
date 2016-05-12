@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun btnClick () {
-        this.txtBruto.setText ("Hola")
+    fun calcular (){
+        txtNeto.text = "prueba"
     }
 }
