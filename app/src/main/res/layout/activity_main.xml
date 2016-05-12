@@ -9,8 +9,148 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.raulcorchero.grosscleaner.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tlMain">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr0"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_weight="0"
+            android:minHeight="70dp">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr1"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:touchscreenBlocksFocus="false"
+            android:minHeight="70dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Salario Bruto:"
+                android:id="@+id/lblBruto"
+                android:layout_column="0"
+                android:layout_gravity="center" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtBruto"
+                android:layout_column="1"
+                android:inputType="number" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr2"
+            android:minHeight="50dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tc10"
+                android:orientation="horizontal"
+                android:minHeight="50dp"
+                android:minWidth="175dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Pagas:"
+                    android:id="@+id/lblPagas"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="33dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tc11"
+                android:minHeight="50dp"
+                android:minWidth="175dp"
+                android:weightSum="1">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtPagas"
+                    android:layout_marginLeft="120dp"
+                    android:layout_gravity="center_vertical" />
+            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr3"
+            android:minHeight="20dp"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="70dp"
+            android:id="@+id/tr4">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calcular"
+                android:id="@+id/btnCalcular"
+                android:layout_column="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr5"
+            android:minHeight="30dp">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="60dp"
+            android:nestedScrollingEnabled="true"
+            android:id="@+id/tr7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Salario Neto:"
+                android:id="@+id/lblNeto"
+                android:layout_column="0"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="3.000"
+                android:id="@+id/txtNeto"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:textSize="50dp" />
+        </TableRow>
+
+    </TableLayout>
+
 </RelativeLayout>
