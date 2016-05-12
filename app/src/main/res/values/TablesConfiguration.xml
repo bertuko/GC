@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <IRPF Year="2016">
+        <QuantitativeLimits>
+            <FamilySituations>
+                <FamilySituation Code="1" Desc0="0,00" Desc1="14266,00" Desc2="15803,00"/>
+                <FamilySituation Code="2" Desc0="13696,00" Desc1="14985,00" Desc2="17138,00"/>
+                <FamilySituation Code="3" Desc0="12000,00" Desc1="12607,00" Desc2="13275,00"/>
+            </FamilySituations>
+        </QuantitativeLimits>
+        <ScalePercentage>
+            <Scale Code="1" Base="0,00" Withholding="0,00" Percentage="19"/>
+            <Scale Code="2" Base="12450,00" Withholding="2365,50" Percentage="24"/>
+            <Scale Code="3" Base="20200,00" Withholding="4225,50" Percentage="30"/>
+            <Scale Code="4" Base="35200,00" Withholding="8725,50" Percentage="37"/>
+            <Scale Code="5" Base="60000,00" Withholding="17901,50" Percentage="45"/>
+        </ScalePercentage>
+        <Limits AnnualLimitMax = "22000,00" QuoteLimitMax = "43" />
+        <Descendants>
+            <Descendant Code="1" Amount="2400,00"/>
+            <Descendant Code="2" Amount="2400,00"/>
+            <Descendant Code="3" Amount="2400,00"/>
+            <Descendant Code="4" Amount="2400,00"/>
+            <DescendantMinor3 Amount="2800,00"/>
+            <More2Desc Amount="600">
+        </Descendants>
+        <Disabilities>
+            <DisPercentage AmountMore65="7750,00"/>
+        </Disabilities>
+        vivienda
+
+    </IRPF>
+
+Cotizacion tiempo parcial
+
+
+
+</resources>
