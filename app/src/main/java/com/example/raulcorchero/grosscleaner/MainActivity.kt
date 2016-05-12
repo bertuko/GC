@@ -12,6 +12,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calcular (){
-        txtNeto.text = "prueba"
+        txtNeto.setText("prueba")
     }
 }

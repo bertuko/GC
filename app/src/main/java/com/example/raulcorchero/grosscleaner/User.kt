@@ -1,5 +1,7 @@
 package com.example.raulcorchero.grosscleaner
 
+data class MyStateObject(val name: String, val age: Int)
+
 class User {
 
     var SituacionFamiliar: TipoSituacionFamiliar = TipoSituacionFamiliar.Sit3
