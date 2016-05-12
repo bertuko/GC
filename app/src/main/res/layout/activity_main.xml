@@ -52,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txtBruto"
                 android:layout_column="1"
-                android:inputType="number" />
+                android:inputType="number"
+                android:layout_gravity="center_vertical" />
 
         </TableRow>
 
@@ -112,7 +113,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calcular"
+                android:text="@string/btnCalcular"
                 android:id="@+id/btnCalcular"
                 android:layout_column="1" />
         </TableRow>
@@ -136,10 +137,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Salario Neto:"
+                android:text="@string/SalarioNeto"
                 android:id="@+id/lblNeto"
                 android:layout_column="0"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="28dp" />
 
             <TextView
                 android:layout_width="wrap_content"
