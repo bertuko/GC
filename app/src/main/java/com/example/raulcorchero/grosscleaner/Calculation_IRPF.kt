@@ -37,7 +37,7 @@ class Calculation_IRPF () {
     }
     fun ApliLimit43 (){
         var NumDesc :Int = 0;
-        NumDesc = getNumDescendent()
+        NumDesc =  0//getNumDescendent()
         var Limit :Float = 0.00f;
         if (Perceptor.ImporteBruto <= ConfigIRPF.AnnualLimitMax) {
             when (Perceptor.SituacionFamiliar) {
@@ -79,7 +79,7 @@ class Calculation_IRPF () {
     fun getExent() {
         var NumDesc :Int = 0;
         var Exento:Boolean = false;
-        NumDesc = getNumDescendent()
+        NumDesc = 0 //getNumDescendent()
         if (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
                 TipoSituacionFamiliar.Sit1->{

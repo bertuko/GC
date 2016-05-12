@@ -15,10 +15,9 @@
     <string name="btnDetalle">Detalle</string>
     <string name="lblIRPFManual">% IRPF Manual:</string>
     <string name="lblSituacion">Situación Familiar</string>
-    <array name="OpcSituacion">
-        <item name="Opcion1Sit">1</item>
-        <item name="Opcion2Sit">2</item>
-        <item name="Opcion3Sit">3</item>
-        <item name="Opcion4Sit">4</item>
-    </array>
+    <string name="lblGradoDis">Grado Discapacidad (%)</string>
+    <string name="lblDescendMen3">Descendientes Menores de 3 años</string>
+    <string name="lblDescend">Descendientes Entre 3 y 25 años</string>
+    <string name="lblRedViv">Reducción Vivienda</string>
+    <string name="lblHoras">Horas Semanales</string>
 </resources>

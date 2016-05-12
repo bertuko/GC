@@ -12,7 +12,8 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/tableSettings">
+        android:id="@+id/tableSettings"
+        android:layout_alignParentEnd="true">
 
         <TableRow
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:minHeight="50dp"
-                android:minWidth="175dp"
+                android:minWidth="200dp"
                 android:id="@+id/td10">
 
                 <TextView
@@ -34,15 +35,14 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/lblIRPFManual"
                     android:id="@+id/lblIRPFManual"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_gravity="center_vertical" />
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/td11"
-                android:minWidth="175dp">
+                android:minWidth="70dp">
 
                 <ToggleButton
                     android:layout_width="wrap_content"
@@ -52,14 +52,46 @@
                     android:layout_gravity="center_vertical"
                     android:onClick="setIRPFMAN" />
 
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/td12"
+                android:minWidth="70dp">
+
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/txtIRPFMan"
-                    android:layout_weight="1"
+                    android:layout_weight="0.67"
                     android:layout_gravity="center_vertical|bottom"
                     android:inputType="number" />
             </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr7"
+            android:minHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/lblHoras"
+                android:id="@+id/lblHoras"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtHoras"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical"
+                android:text="40" />
         </TableRow>
 
         <TableRow
@@ -75,8 +107,7 @@
                 android:text="@string/lblSituacion"
                 android:id="@+id/lblituacion"
                 android:layout_column="0"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp" />
+                android:layout_gravity="center_vertical" />
 
             <Spinner
                 android:layout_width="fill_parent"
@@ -84,7 +115,8 @@
                 android:id="@+id/cmbSituacion"
                 android:layout_column="1"
                 android:layout_gravity="center"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:layout_span="2" />
 
         </TableRow>
 
@@ -92,7 +124,100 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tr3"
-            android:minHeight="50dp"></TableRow>
+            android:minHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/lblGradoDis"
+                android:id="@+id/lblGradoDis"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtGradoDis"
+                android:layout_column="2"
+                android:maxHeight="20dp"
+                android:layout_gravity="center_vertical"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr4"
+            android:minHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/lblDescendMen3"
+                android:id="@+id/lblDescMen3"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical"
+                android:layout_span="2"
+                android:textSize="17dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDescMen3"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr5"
+            android:minHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/lblDescend"
+                android:id="@+id/lblDescend"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical"
+                android:layout_span="2" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDescend"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr6"
+            android:minHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/lblRedViv"
+                android:id="@+id/lblRedViv"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ckbRedViv"
+                android:layout_column="2"
+                android:layout_gravity="center_vertical" />
+        </TableRow>
     </TableLayout>
 
 </RelativeLayout>

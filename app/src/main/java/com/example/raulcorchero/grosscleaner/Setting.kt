@@ -19,9 +19,10 @@ class Setting : AppCompatActivity() {
     fun inicializador() {
         txtIRPFMan.isEnabled = false
 
-
-
-        val arraySpinner = arrayOf("1", "2", "3", "4", "5")
+        val arraySpinner = arrayOf( "Escoja una opción",
+                                    "Soltero, Viudo, Divorciado o Separado",
+                                    "Con cónyugue (ingresos de este <1500 euros al año",
+                                    "Otros")
 
         val s = findViewById(R.id.cmbSituacion) as Spinner
         val adapter = ArrayAdapter<String>(this,
@@ -30,6 +31,26 @@ class Setting : AppCompatActivity() {
     }
 
     fun setIRPFMAN(v: View) {
-        txtIRPFMan.setEnabled(this.tbIRPF.isChecked())
+        if(this.tbIRPF.isChecked()) {
+            txtIRPFMan.setEnabled(true)
+            cmbSituacion.setEnabled(false)
+            txtGradoDis.setText("")
+            txtGradoDis.setEnabled(false)
+            txtDescend.setText("")
+            txtDescend.setEnabled(false)
+            txtDescMen3.setText("")
+            txtDescMen3.setEnabled(false)
+            ckbRedViv.setChecked(false)
+            ckbRedViv.setEnabled(false)
+        }else{
+            txtIRPFMan.setText("")
+            txtIRPFMan.setEnabled(false)
+            cmbSituacion.setEnabled(true)
+            txtGradoDis.setEnabled(true)
+            txtDescend.setEnabled(true)
+            txtDescMen3.setEnabled(true)
+            ckbRedViv.setEnabled(true)
+        }
+
     }
 }
