@@ -34,8 +34,7 @@
                 android:layout_span="2"
                 android:visibility="visible"
                 android:background="@mipmap/wke"
-                android:minHeight="73dp"
-                android:maxHeight="73dp"
+                android:minHeight="72dp"
                 android:cropToPadding="false"
                 android:clickable="false" />
         </TableRow>
