@@ -1,8 +1,7 @@
 package com.example.raulcorchero.grosscleaner
 
-/**
- * Created by david.negrete on 12/05/2016.
- */
 class Configuration_Contribution () {
-
+    val Year: Int = 2016
+    val Scale: Configuration_Contribution_CommonContingencies_Scale = Configuration_Contribution_CommonContingencies_Scale()
+    val ProfessionalContingencies: Configuration_Contribution_ProfessionalContingencies = Configuration_Contribution_ProfessionalContingencies()
 }

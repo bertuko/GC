@@ -4,6 +4,6 @@ package com.example.raulcorchero.grosscleaner
 //import kotlin.collections.*
 
 class Configuration_IRPF_QuantitativeLimits () {
-    val FamilySituations = Configuration_IRPF_QuantitativeLimits_FamilySituations()
-    val ScalePercentages = Configuration_IRPF_QuantitativeLimits_ScalePercentages()
+    val FamilySituations = listOf<Configuration_IRPF_QuantitativeLimits_FamilySituations>()
+    val ScalePercentages = listOf<Configuration_IRPF_QuantitativeLimits_ScalePercentages>()
 }

@@ -26,6 +26,6 @@
         <CommonContingencies Percentage="4,70">
             <Scale Code="1" Max="3642,00" Min="764,00" Hour="4,60" />
         </CommonContingencies>
-        <ProfesionalContingences Max="3642,00" MinMonthly="764,40" MinHour="4,60" PercentageDesemployee="1,55" PercentageFP="0,10"/>
+        <ProfessionalContingencies Max="3642,00" MinMonthly="764,40" MinHour="4,60" PercentageDesemployee="1,55" PercentageFP="0,10"/>
     </Contribution>
 </resources>
