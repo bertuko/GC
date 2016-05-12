@@ -49,7 +49,8 @@
                     android:layout_height="wrap_content"
                     android:text="New ToggleButton"
                     android:id="@+id/tbIRPF"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:onClick="setIRPFMAN" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -83,7 +84,6 @@
                 android:id="@+id/cmbSituacion"
                 android:layout_column="1"
                 android:layout_gravity="center"
-                android:entries="@array/OpcSituacion"
                 android:focusableInTouchMode="true" />
 
         </TableRow>

@@ -2,6 +2,7 @@ package com.example.raulcorchero.grosscleaner
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class Setting : AppCompatActivity() {
@@ -14,10 +15,10 @@ class Setting : AppCompatActivity() {
     }
 
     fun inicializador() {
-        if(tbIRPF.isActivated) {
-            txtIRPFMan.isEnabled = true
-        }else{
-            txtIRPFMan.isEnabled = false
-        }
+        txtIRPFMan.isEnabled = false
+    }
+
+    fun setIRPFMAN(v: View) {
+        txtIRPFMan.setEnabled(this.tbIRPF.isChecked())
     }
 }
