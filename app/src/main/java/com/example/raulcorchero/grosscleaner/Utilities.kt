@@ -1,25 +1,37 @@
 package com.example.raulcorchero.grosscleaner
 import android.content.*
 import java.io.*
+import com.fasterxml.jackson.module.kotlin.*
 
-class Utilities () {
-    public fun GetConfiguration () {
-//        val assetManager = getAssets()
-//        val oXML = assetManager.open(R.string.configurationFileName)
+class Utilities {
+    private var oContext: Context
 
+    constructor (c: Context) {
+        this.oContext = c
+    }
 
+    fun GetConfiguration () {
+        var oXML = oContext.resources.openRawResource (R.xml.tables_configuration)
 
+        var p = 0
 
     }
 
-    public fun saveUserdata() {
-  //      Context.getApplicationContext()
-//
-    //    var file: File = new File(context.getFilesDir(), filename);
-//
-  //      val context: Context = SherlockFragmentActivity.this.getActivity()
-    //    val Filedir: File  = getFilesDir( )
-
+    public fun saveUserdata(usuario: User) {
+        val filename: String = R.string.userDataFileName.toString()
+        val file: File = File(this.oContext.getFilesDir(), filename)
+        var outputStream: FileOutputStream = this.oContext.openFileOutput(filename, Context.MODE_PRIVATE);
+        val mapper = jacksonObjectMapper()
+        mapper.writeValue(outputStream, usuario)
+        outputStream.close();
     }
 
+    public fun LoadUserdata() : User {
+        val filename: String = R.string.userDataFileName.toString()
+        var fis: FileInputStream = this.oContext.openFileInput(filename)
+        var isr: InputStreamReader = InputStreamReader(fis)
+        val mapper = jacksonObjectMapper()
+        var usuario: User = mapper.readValue<User>(isr.readText())
+        return usuario
+    }
 }
