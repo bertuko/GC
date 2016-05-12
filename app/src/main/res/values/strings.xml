@@ -11,4 +11,6 @@
     <string name="btnCalcular">Calcular</string>
     <string name="SalarioNeto">Salario Neto:</string>
     <string name="iWKE">Wolters Kluwer</string>
+    <string name="lblExtra">Pagas Extras:</string>
+    <string name="btnDetalle">Detalle</string>
 </resources>

@@ -118,7 +118,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="70dp"
+            android:minHeight="50dp"
             android:id="@+id/tr4">
 
             <Button
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tr5"
-            android:minHeight="30dp">
+            android:minHeight="10dp">
 
         </TableRow>
 
@@ -142,7 +142,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="60dp"
-            android:nestedScrollingEnabled="true"
+            android:nestedScrollingEnabled="false"
             android:id="@+id/tr7">
 
             <TextView
@@ -164,6 +164,47 @@
                 android:layout_column="1"
                 android:layout_gravity="center"
                 android:textSize="70dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr8"
+            android:minHeight="70dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/lblExtra"
+                android:layout_column="0"
+                android:layout_gravity="center"
+                android:textSize="28dp"
+                android:text="@string/lblExtra" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="3.000"
+                android:id="@+id/textView"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:textSize="70dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr9"
+            android:minHeight="70dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnDetalle"
+                android:id="@+id/btnDetalle"
+                android:layout_column="1" />
         </TableRow>
 
     </TableLayout>
