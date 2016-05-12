@@ -1,8 +1,7 @@
 package com.example.raulcorchero.grosscleaner
+import android.content.*
+import java.io.*
 
-/**
- * Created by david.negrete on 12/05/2016.
- */
 class Utilities () {
     public fun GetConfiguration () {
 //        val assetManager = getAssets()
@@ -12,4 +11,15 @@ class Utilities () {
 
 
     }
+
+    public fun saveUserdata() {
+  //      Context.getApplicationContext()
+//
+    //    var file: File = new File(context.getFilesDir(), filename);
+//
+  //      val context: Context = SherlockFragmentActivity.this.getActivity()
+    //    val Filedir: File  = getFilesDir( )
+
+    }
+
 }
