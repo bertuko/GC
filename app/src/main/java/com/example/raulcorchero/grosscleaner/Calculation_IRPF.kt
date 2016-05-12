@@ -21,6 +21,13 @@ class Calculation_IRPF () {
     var IRPFQLimitsSP: Configuration_IRPF_QuantitativeLimits_ScalePercentages = Configuration_IRPF_QuantitativeLimits_ScalePercentages();
     var Perceptor: User = User();
     var BASE: Float = 0.00f;
+    var REDU: Float = 0.00f;
+    var PENSION: Float = 0.00f;
+    var HIJOS: Float = 0.00f;
+    var DESEM: Float = 0.00f;
+    var CONYUGE: Float = 0.00f;
+    var RNTREDU: Float = 0.00f;
+
 
     fun getMinoPago () {
         if (Perceptor.ImporteBruto < ConfigIRPF.HomeDeductionsMaxAmount && Perceptor.ReduccionVivienda == true)
@@ -37,7 +44,7 @@ class Calculation_IRPF () {
     }
     fun ApliLimit43 (){
         var NumDesc :Int = 0;
-        NumDesc = getNumDescendent()
+        NumDesc =0// getNumDescendent()
         var Limit :Float = 0.00f;
         if (Perceptor.ImporteBruto <= ConfigIRPF.AnnualLimitMax) {
             when (Perceptor.SituacionFamiliar) {
@@ -79,7 +86,7 @@ class Calculation_IRPF () {
     fun getExent() {
         var NumDesc :Int = 0;
         var Exento:Boolean = false;
-        NumDesc = getNumDescendent()
+        NumDesc =0// getNumDescendent()
         if (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
                 TipoSituacionFamiliar.Sit1->{
@@ -146,4 +153,13 @@ class Calculation_IRPF () {
         }
         return  ResultCuota
     }
+    fun getBase(){
+        REDU = PENSION+HIJOS+DESEM+CONYUGE
+        if (RNTREDU>REDU){
+            BASE = RNTREDU-REDU
+        }else{
+            BASE=0.00f
+        }
+    }
+
 }
