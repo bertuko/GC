@@ -1,9 +1,15 @@
 package com.example.raulcorchero.grosscleaner
 
-/**
- * Created by david.negrete on 12/05/2016.
- */
 class Configuration_IRPF () {
+    val Year: Int = 2016
+    val AnnualLimitMax: Float = 22000.00f
+    val QuoteLimitMax: Int = 43
+    val DisAmountMore65: Float = 7750.00f
+    val DisWithoutHelp: Float = 3500f
+    val HomeDeductionsMaxAmount: Float = 33007.20f
+    val HomeDeductionPercentage: Int = 2
+
     val QuantitativeLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits()
-    val ScalePercentages: Configuration_IRPF_ScalePercentages = Configuration_IRPF_ScalePercentages()
+    val Descendants: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants()
+
 }

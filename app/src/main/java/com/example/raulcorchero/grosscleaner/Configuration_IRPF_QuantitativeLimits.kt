@@ -1,8 +1,9 @@
 package com.example.raulcorchero.grosscleaner
 
-/**
- * Created by david.negrete on 12/05/2016.
- */
-class Configuration_IRPF_QuantitativeLimits () {
+//import java.util.*
+//import kotlin.collections.*
 
+class Configuration_IRPF_QuantitativeLimits () {
+    val FamilySituations = listOf<Configuration_IRPF_QuantitativeLimits_FamilySituations>()
+    val ScalePercentages = listOf<Configuration_IRPF_QuantitativeLimits_ScalePercentages>()
 }
