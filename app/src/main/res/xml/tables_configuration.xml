@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <IRPF Year="2016" AnnualLimitMax="22000.00" QuoteLimitMax="0.43" DisAmountMore65="7750.00" DisWithoutHelp="3500.00" HomeDeductionsMaxAmount="33007.20" HomeDeductionPercentage="0.02">
+    <IRPF Year="2016" AnnualLimitMax="22000.00" QuoteLimitMax="0.43" DisAmountMore65="7750.00" DisWithoutHelp="3500.00" HomeDeductionsMaxAmount="33007.20" HomeDeductionPercentage="0.02" GeneralExpenses="2000.00">
         <QuantitativeLimits>
             <FamilySituations>
                 <FamilySituation Code="1" Desc0="0.00" Desc1="14266.00" Desc2="15803.00"/>

@@ -8,6 +8,7 @@ class Configuration_IRPF () {
     val DisWithoutHelp: Float = 3500f
     val HomeDeductionsMaxAmount: Float = 33007.20f
     val HomeDeductionPercentage: Int = 2
+    val ExpensesGeneral: Float = 2000.00f
 
     val QuantitativeLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits()
     val Descendants: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants()
