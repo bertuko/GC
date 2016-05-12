@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">GrossCleaner</string>
     <string name="configurationFileName">TablesConfiguration.xml</string>
-    <string name="Sit1">Situación 1: Soltero/a, viudo/a, divorciado/a o separado/a legalmente, con hijos solteros menores de 18 años o incapacitados judicialmente que convivan exclusivamente con el perceptor, sin convivir también con el otro progenitor, siempre que proceda consignar al menos un hijo o descendiente en el apartado "Ascendientes y Descendientes".</string>
-    <string name="Sit2">Situación 2: Perceptor casado y no separado legalmente cuyo cónyuge no obtenga rentas superiores a 1.500 euros anuales, excluidas las exentas.</string>
-    <string name="Sit3">Situación 3: Perceptor cuya situación familiar es distinta de las dos anteriores o no desee manifestarla .</string>
+    <string name="userDataFileName">UserData.xml</string>
+    <string name="SituacionFamiliar">Situación Familiar: </string>
+    <string name="Sit1Long">Situación 1: Soltero/a, viudo/a, divorciado/a o separado/a legalmente, con hijos solteros menores de 18 años o incapacitados judicialmente que convivan exclusivamente con el perceptor, sin convivir también con el otro progenitor, siempre que proceda consignar al menos un hijo o descendiente en el apartado "Ascendientes y Descendientes".</string>
+    <string name="Sit2Long">Situación 2: Perceptor casado y no separado legalmente cuyo cónyuge no obtenga rentas superiores a 1.500 euros anuales, excluidas las exentas.</string>
+    <string name="Sit3Long">Situación 3: Perceptor cuya situación familiar es distinta de las dos anteriores o no desee manifestarla .</string>
     <string name="SalarioBruto">Salario Bruto: </string>
     <string name="Pagas">Pagas: </string>
 </resources>
