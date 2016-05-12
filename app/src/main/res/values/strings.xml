@@ -13,6 +13,7 @@
     <string name="iWKE">Wolters Kluwer</string>
     <string name="lblExtra">Pagas Extras:</string>
     <string name="btnDetalle">Detalle</string>
+    <string name="preference_file_key">GrossCleaner_UserData</string>
     <string name="lblIRPFManual">% IRPF Manual:</string>
     <string name="lblSituacion">Situación Familiar</string>
     <string name="lblGradoDis">Grado Discapacidad (%)</string>
