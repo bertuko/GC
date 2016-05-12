@@ -21,11 +21,17 @@
             <Descendant Code="2" Amount="2400,00"/>
             <Descendant Code="3" Amount="2400,00"/>
             <Descendant Code="4" Amount="2400,00"/>
-                <DescendantMinor3 Amount="2800,00"/>
+            <DescendantMinor3 Amount="2800,00"/>
+            <More2Desc Amount="600">
         </Descendants>
+        <Disabilities>
+            <DisPercentage AmountMore65="7750,00"/>
+        </Disabilities>
+        vivienda
+
     </IRPF>
 
-
+Cotizacion tiempo parcial
 
 
 
