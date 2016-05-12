@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.raulcorchero.grosscleaner.Setting">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tableSettings">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr1"
+            android:minHeight="30dp"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="50dp"
+                android:minWidth="175dp"
+                android:id="@+id/td10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/lblIRPFManual"
+                    android:id="@+id/lblIRPFManual"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/td11"
+                android:minWidth="175dp">
+
+                <ToggleButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New ToggleButton"
+                    android:id="@+id/tbIRPF"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="setIRPFMAN" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtIRPFMan"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical|bottom"
+                    android:inputType="number" />
+            </TableRow>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr2"
+            android:minHeight="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/lblSituacion"
+                android:id="@+id/lblituacion"
+                android:layout_column="0"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp" />
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/cmbSituacion"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:focusableInTouchMode="true" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/tr3"
+            android:minHeight="50dp"></TableRow>
+    </TableLayout>
+
+</RelativeLayout>
