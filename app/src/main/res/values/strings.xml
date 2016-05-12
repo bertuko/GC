@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GrossCleaner</string>
+    <string name="configurationFileName">TablesConfiguration.xml</string>
 </resources>
