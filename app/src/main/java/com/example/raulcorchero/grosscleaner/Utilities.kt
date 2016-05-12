@@ -5,9 +5,8 @@ package com.example.raulcorchero.grosscleaner
  */
 class Utilities () {
     public fun GetConfiguration () {
-        val assetManager = getAssets()
-        val oXML = assetManager.open(R.string.configurationFileName)
-
+//        val assetManager = getAssets()
+//        val oXML = assetManager.open(R.string.configurationFileName)
 
 
 
