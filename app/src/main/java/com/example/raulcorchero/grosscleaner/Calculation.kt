@@ -9,5 +9,10 @@ class Calculation (){
     val CalculateIRPF: Calculation_IRPF = Calculation_IRPF();
     val CalculateContribution: Calculation_Contribution = Calculation_Contribution();
     val CalculateDetail: Detail = Detail();
+
+    fun Calculate(): Detail{
+
+        return CalculateDetail
+    }
 }
 
