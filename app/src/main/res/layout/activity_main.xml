@@ -127,8 +127,7 @@
                 android:text="@string/btnCalcular"
                 android:id="@+id/btnCalcular"
                 android:layout_column="1"
-                android:onClick="MainActivity.calcular"
-                android:nestedScrollingEnabled="false" />
+                android:onClick="calcular" />
         </TableRow>
 
         <TableRow
@@ -205,7 +204,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btnDetalle"
                 android:id="@+id/btnDetalle"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:onClick="btnDetalle" />
         </TableRow>
 
     </TableLayout>
