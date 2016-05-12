@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GrossCleaner.iml" filepath="$PROJECT_DIR$/GrossCleaner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WKEApp.iml" filepath="$PROJECT_DIR$/WKEApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wkeApp.iml" filepath="$PROJECT_DIR$/wkeApp.iml" />
     </modules>
   </component>
 </project>
