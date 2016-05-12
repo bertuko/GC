@@ -14,9 +14,21 @@ class User {
     var ImporteBruto: Float = 0f
     var NumPagas: Int = 12
 
+    constructor() {
+        if (!esNuevoUser()) {
+            LoadUser()
+        }
+    }
 
-    fun esNuevoUser(): Boolean {
+    private fun esNuevoUser(): Boolean {
         return true
+    }
+
+    private fun LoadUser(): User {
+        var Usuario: User = User()
+        var u: Utilities
+        //Usuario = u.ReadXMLFile("asdads")
+        return Usuario
     }
 
     fun grabarUser(): Boolean {
