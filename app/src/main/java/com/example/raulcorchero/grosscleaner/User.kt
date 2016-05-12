@@ -1,7 +1,5 @@
 package com.example.raulcorchero.grosscleaner
 
-import java.math.BigDecimal
-
 class User {
 
     var SituacionFamiliar: TipoSituacionFamiliar = TipoSituacionFamiliar.Sit3
@@ -15,5 +13,16 @@ class User {
     // Datos paga
     var ImporteBruto: Float = 0f
     var NumPagas: Int = 12
+
+
+    fun esNuevoUser(): Boolean {
+        return true
+    }
+
+    fun grabarUser(): Boolean {
+
+
+        return true
+    }
 
 }
