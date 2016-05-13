@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         if (!u.ExistsUserdata()){
             val intent = Intent(this@MainActivity, Setting::class.java)
             startActivity(intent)
+        } else {
+            showUserData()
         }
 
     }
@@ -35,6 +37,12 @@ class MainActivity : AppCompatActivity() {
         lblExtra.visibility = stat
         txtNeto.visibility = stat
         txtExtra.visibility = stat
+    }
+
+    fun showUserData () {
+        var u = Utilities(this.getBaseContext())
+        var usuario: User = u.LoadUserdata()
+        ShowUserDataInActivity(usuario)
     }
 
     fun calcular (v: View){
@@ -59,19 +67,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun ShowDataInActivity (oDetails: Detail, oUser: User) {
-        this.ImporteBruto.setText( oUser.ImporteBruto.toInt().toString() )
-        this.NumPagas.setText ( oUser.NumPagas.toInt().toString() )
+        ShowUserDataInActivity(oUser)
+        ShowDetailDataInActivity(oDetails)
+    }
+    private fun ShowUserDataInActivity (oUser: User) {
+        this.ImporteBruto.setText(oUser.ImporteBruto.toInt().toString())
+        this.NumPagas.setText (oUser.NumPagas.toInt().toString())
+    }
+    private fun ShowDetailDataInActivity (oDetails: Detail) {
         this.txtNeto.setText( oDetails.PagaMensual.toInt().toString() )
         this.txtExtra.setText( oDetails.PagaExtra.toInt().toString() )
     }
 
-    fun initalizeValue (datastring: String): String{
+    private fun initalizeValue (datastring: String): String{
         var r: String = datastring.trim()
         if (r == "") {r = "0"}
         return r
     }
 
-    fun showAlert (title: String, message: String){
+    private fun showAlert (title: String, message: String){
         alert(message, title) {
             positiveButton("Aceptar") { }
         }.show()
