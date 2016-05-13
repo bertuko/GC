@@ -18,6 +18,7 @@ class Configuration_IRPF () {
     var MinDis65 = 9000.00f
     var MinDis3365 = 3000.00f
     var MinAsisPer = 3000.00f
+    var MinDis3 = 2800.00f
 
     var QuantitativeLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits()
     var Descendants: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants()
