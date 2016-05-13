@@ -8,7 +8,7 @@ import kotlin.reflect.jvm.internal.impl.descriptors.impl.CompositePackageFragmen
  * Fixed by david.negrete on 13/05/2016
  * Supervised by albert.baron on 13/05/2016
  */
-class Calculation_Contribution (oConfig:  Configuration, Perceptor: User){
+class Calculation_Contribution (oConfig:  Configuration, oUser: User){
     var ConfigCC: Configuration_Contribution_CommonContingencies = oConfig.Contribution.CommonContigencies
     var ConfigPC: Configuration_Contribution_ProfessionalContingencies = oConfig.Contribution.ProfessionalContingencies
     var ConfigCCS: Configuration_Contribution_CommonContingencies_Scale = ConfigCC.Scale[0]
@@ -19,6 +19,7 @@ class Calculation_Contribution (oConfig:  Configuration, Perceptor: User){
     var MULT: Int = 0
     var TOPMIN: Float = 0f
     var TOPMAX: Float = 0f
+    var Perceptor: User = oUser
 
 
 

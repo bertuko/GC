@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
             // Llamar al calculo
-            val c: Calculation = Calculation()
+            val c: Calculation = Calculation(usuario)
             c.Calculate()
         } else {
             //mensaje de aviso... Hay que introducir importes o si no...
