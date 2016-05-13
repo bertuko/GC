@@ -16,10 +16,15 @@ class Calculation (){
         var oIRPF : Calculation_IRPF = Calculation_IRPF(oConfig, this.oUser)
         var oDetail: Detail = Detail()
         var fBrutoPorPaga: Float = this.oUser.ImporteBruto / this.oUser.NumPagas
+        var TipoIRPF : Float = 0f
+        if (oUser.FuerzaRetencion == true)
+            TipoIRPF = oUser.PorcentajeRetencion
+        else
+            TipoIRPF = oIRPF.TIPO
 
         oDetail.CuotaCotizaciones = oContribution.Calc(false)
-        oDetail.PagaMensual = fBrutoPorPaga - (oDetail.CuotaCotizaciones + (fBrutoPorPaga * oIRPF.TIPO ) )
-        oDetail.PagaExtra = fBrutoPorPaga - ( fBrutoPorPaga * oIRPF.TIPO )
+        oDetail.PagaMensual = fBrutoPorPaga - (oDetail.CuotaCotizaciones + (fBrutoPorPaga * TipoIRPF ) )
+        oDetail.PagaExtra = fBrutoPorPaga - ( fBrutoPorPaga * TipoIRPF )
 
         return oDetail
     }
