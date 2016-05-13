@@ -64,7 +64,8 @@
                 android:id="@+id/ImporteBruto"
                 android:layout_column="1"
                 android:layout_gravity="center_vertical"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textAlignment="textEnd" />
 
         </TableRow>
 
@@ -106,7 +107,8 @@
                     android:id="@+id/NumPagas"
                     android:layout_marginLeft="120dp"
                     android:layout_gravity="center_vertical"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textAlignment="textEnd" />
             </TableRow>
         </TableRow>
 
@@ -166,7 +168,8 @@
                 android:id="@+id/txtNeto"
                 android:layout_column="1"
                 android:layout_gravity="center"
-                android:textSize="70dp" />
+                android:textSize="70dp"
+                android:textAlignment="textEnd" />
         </TableRow>
 
         <TableRow
@@ -193,7 +196,8 @@
                 android:id="@+id/txtExtra"
                 android:layout_column="1"
                 android:layout_gravity="center"
-                android:textSize="70dp" />
+                android:textSize="70dp"
+                android:textAlignment="textEnd" />
         </TableRow>
 
         <TableRow
