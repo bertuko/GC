@@ -92,7 +92,8 @@
                 android:id="@+id/txtHoras"
                 android:layout_column="2"
                 android:layout_gravity="center_vertical"
-                android:text="40" />
+                android:text="40"
+                android:gravity="right" />
         </TableRow>
 
         <TableRow
@@ -144,7 +145,8 @@
                 android:layout_column="2"
                 android:maxHeight="20dp"
                 android:layout_gravity="center_vertical"
-                android:inputType="number" />
+                android:inputType="number"
+                android:gravity="right" />
         </TableRow>
 
         <TableRow
@@ -170,7 +172,8 @@
                 android:id="@+id/txtDescMen3"
                 android:layout_column="2"
                 android:layout_gravity="center_vertical"
-                android:inputType="number" />
+                android:inputType="number"
+                android:gravity="right" />
         </TableRow>
 
         <TableRow
@@ -196,7 +199,8 @@
                 android:id="@+id/txtDescend"
                 android:layout_column="2"
                 android:layout_gravity="center_vertical"
-                android:inputType="number" />
+                android:inputType="number"
+                android:gravity="right" />
         </TableRow>
 
         <TableRow
@@ -219,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ckbRedViv"
                 android:layout_column="2"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical|right" />
         </TableRow>
     </TableLayout>
 
