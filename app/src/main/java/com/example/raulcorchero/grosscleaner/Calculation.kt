@@ -19,7 +19,7 @@ class Calculation (){
         oIRPF.Calc()
         var oContribution : Calculation_Contribution = Calculation_Contribution(oConfig, this.oUser)
         if (oUser.FuerzaRetencion == true)
-            TipoIRPF = oUser.PorcentajeRetencion
+            TipoIRPF = oUser.PorcentajeRetencion / 100
         else
             TipoIRPF = oIRPF.TIPO
 
