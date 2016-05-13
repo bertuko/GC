@@ -1,6 +1,7 @@
 package com.example.raulcorchero.grosscleaner
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
+        super.onStop()
+
         var u = Utilities(this.getBaseContext())
         var usuario: User = u.LoadUserdata()
 
@@ -78,13 +80,13 @@ class MainActivity : AppCompatActivity() {
         this.txtExtra.setText( oDetails.PagaExtra.toInt().toString() )
     }
 
-    fun initalizeValue (datastring: String): String{
+    private fun initalizeValue (datastring: String): String{
         var r: String = datastring.trim()
         if (r == "") {r = "0"}
         return r
     }
 
-    fun showAlert (title: String, message: String){
+    private fun showAlert (title: String, message: String){
         alert(message, title) {
             positiveButton("Aceptar") { }
         }.show()
