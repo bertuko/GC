@@ -14,6 +14,7 @@ class User () {
     // Datos paga
     var ImporteBruto: Float = 0f
     var NumPagas: Int = 12
+    var Horas: Int = 40
 }
 
 //data class DataUser (
