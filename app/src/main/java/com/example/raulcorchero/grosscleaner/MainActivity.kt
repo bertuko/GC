@@ -66,8 +66,6 @@ class MainActivity : AppCompatActivity() {
         }.show()
     }
 
-    }
-
     fun viewSettings(v: View){
         val intent = Intent(this@MainActivity, Setting::class.java)
         startActivity(intent)
