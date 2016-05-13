@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
 
 class Setting : AppCompatActivity() {
 
+    var usuario: User = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +28,36 @@ class Setting : AppCompatActivity() {
         val adapter = ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner)
         s.adapter = adapter
+
+
+        var u = Utilities(this.getBaseContext())
+        if (u.ExistsUserdata()){
+            usuario = u.LoadUserdata()
+        }
+
+        //Mostramos los datos en la pantalla
+    }
+
+    override fun onPause () {
+
+
+        //Recuperamos datos de la pantalla al usuario
+        usuario.FuerzaRetencion = this.tbIRPF.isChecked()
+        usuario.PorcentajeRetencion = initalizeValue(this.txtIRPFMan.getText().toString()).toInt()
+        usuario.Horas = initalizeValue(this.txtHoras.getText().toString()).toInt()
+        usuario.SituacionFamiliar = this.cmbSituacion.selectedItemPosition
+        //usuario.EscalaDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
+        usuario.GradoDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
+
+
+        var u = Utilities(this.getBaseContext())
+        u.saveUserdata(usuario)
+    }
+
+    private fun initalizeValue (datastring: String): String{
+        var r: String = datastring.trim()
+        if (r == "") {r = "0"}
+        return r
     }
 
     fun setIRPFMAN(v: View) {

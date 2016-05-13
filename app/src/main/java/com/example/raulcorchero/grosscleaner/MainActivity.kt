@@ -20,17 +20,32 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Setting::class.java)
             startActivity(intent)
         }
-        lblBruto.visibility = 0
-        lblExtra.visibility = 0
-        txtExtra.visibility = 0
-        txtNeto.visibility = 0
+
+    }
+
+    override fun onStop() {
+        var u = Utilities(this.getBaseContext())
+        var usuario: User = u.LoadUserdata()
+
+        //Recuperamos datos de la pantalla al usuario
+        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
+        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
+
+        u.saveUserdata(usuario)
+    }
+
+    private fun MostrarCamposResultado(mostrar: Boolean) {
+        var stat: Int = View.INVISIBLE
+        if (mostrar) { stat = View.VISIBLE }
+        lblNeto.visibility = stat
+        lblExtra.visibility = stat
+        txtNeto.visibility = stat
+        txtExtra.visibility = stat
     }
 
     fun calcular (v: View){
         var u = Utilities(v.context)
         var usuario: User = u.LoadUserdata()
-        var sImporteBruto: String = this.ImporteBruto.getText().toString().trim()
-        var sNumPagas: String = this.NumPagas.getText().toString().trim()
 
         //Recuperamos datos de la pantalla al usuario
         usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
