@@ -2,10 +2,6 @@ package com.example.raulcorchero.grosscleaner
 
 import java.text.DecimalFormat
 
-
-/**
- * Created by raul.palomares on 12/05/2016.
- */
 class Calculation_IRPF () {
     var MINOPAGO: Float = 0.00f;
     var MINPERFA: Float = 0.00f;
@@ -100,33 +96,33 @@ class Calculation_IRPF () {
         if (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
                 1 ->{
-                    if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc1)){
+                    if ((NumDesc == 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc1)){
                         Exento = true
                     } else {
-                        if ((NumDesc > 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc2))
+                        if ((NumDesc > 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc2))
                             Exento = true
                     }
                 }
                 2 -> {
-                    if ((NumDesc == 0) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc0)){
+                    if ((NumDesc == 0) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc0)){
                         Exento = true
                     } else {
-                        if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc1)) {
+                        if ((NumDesc == 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc1)) {
                             Exento = true
                         }else{
-                            if ((NumDesc > 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2))
+                            if ((NumDesc > 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2))
                                 Exento = true
                         }
                     }
                 }
                 3 -> {
-                    if ((NumDesc == 0) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc0)){
+                    if ((NumDesc == 0) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc0)){
                         Exento = true
                     } else {
-                        if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc1)) {
+                        if ((NumDesc == 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc1)) {
                             Exento = true
                         }else{
-                            if ((NumDesc > 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc2))
+                            if ((NumDesc > 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc2))
                                 Exento = true
                         }
                     }
