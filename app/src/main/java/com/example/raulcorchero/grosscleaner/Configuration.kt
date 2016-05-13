@@ -20,6 +20,10 @@ class Configuration () {
         IRPF.HomeDeductionsMaxAmount = 33007.20f
         IRPF.HomeDeductionPercentage = 0.02f
         IRPF.ExpensesGeneral = 2000.00f
+        IRPF.MinTaxpayer = 5550.00f
+        IRPF.MinDis65 = 9000.00f
+        IRPF.MinDis3365 = 3000.00f
+        IRPF.MinAsisPer = 3000.00f
 
         IRPF.QuantitativeLimits.FamilySituations.add ( Configuration_IRPF_QuantitativeLimits_FamilySituations ( 0.00f, 14266.00f, 15803.00f ) )
         IRPF.QuantitativeLimits.FamilySituations.add ( Configuration_IRPF_QuantitativeLimits_FamilySituations ( 13696.00f, 14985.00f, 17138.00f ) )

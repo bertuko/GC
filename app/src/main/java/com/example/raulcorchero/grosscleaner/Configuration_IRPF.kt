@@ -14,6 +14,10 @@ class Configuration_IRPF () {
     var BaseRedJobMin: Float = 14450.00f
     var RedJobMin: Float = 0.00f
     var CoefRedJob = 1.15625f
+    var MinTaxpayer = 5550.00f
+    var MinDis65 = 9000.00f
+    var MinDis3365 = 3000.00f
+    var MinAsisPer = 3000.00f
 
     var QuantitativeLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits()
     var Descendants: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants()
