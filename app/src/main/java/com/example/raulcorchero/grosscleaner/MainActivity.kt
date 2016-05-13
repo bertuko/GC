@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         var u = Utilities(this.getBaseContext())
         if (!u.ExistsUserdata()){
             val intent = Intent(this@MainActivity, Setting::class.java)
-            startActivity(intent)
+            //startActivity(intent)
         }
 
     }

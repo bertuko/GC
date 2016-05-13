@@ -27,14 +27,14 @@ class Setting : AppCompatActivity() {
                 android.R.layout.simple_spinner_item, arraySpinner)
         s.adapter = adapter
 
-        var usuario: User = User()
-        var u = Utilities(this.getBaseContext())
-        if (u.ExistsUserdata()){
-            usuario = u.LoadUserdata()
-        }
+        //var usuario: User = User()
+        //var u = Utilities(this.getBaseContext())
+        //if (u.ExistsUserdata()){
+        //    usuario = u.LoadUserdata()
+        //}
 
         //Mostramos los datos en la pantalla
-        cargarDatos(usuario)
+        //cargarDatos(usuario)
     }
 
     override fun onPause () {
@@ -63,51 +63,51 @@ class Setting : AppCompatActivity() {
 
     fun setIRPFMAN(v: View) {
         if(this.tbIRPF.isChecked()) {
-            txtIRPFMan.setEnabled(true)
-            cmbSituacion.setEnabled(false)
-            txtGradoDis.setText("")
-            txtGradoDis.setEnabled(false)
-            txtDescend.setText("")
-            txtDescend.setEnabled(false)
-            txtDescMen3.setText("")
-            txtDescMen3.setEnabled(false)
-            ckbRedViv.setChecked(false)
-            ckbRedViv.setEnabled(false)
+            this.txtIRPFMan.setEnabled(true)
+            this.cmbSituacion.setEnabled(false)
+            this.txtGradoDis.setText("")
+            this.txtGradoDis.setEnabled(false)
+            this.txtDescend.setText("")
+            this.txtDescend.setEnabled(false)
+            this.txtDescMen3.setText("")
+            this.txtDescMen3.setEnabled(false)
+            this.ckbRedViv.setChecked(false)
+            this.ckbRedViv.setEnabled(false)
         }else{
-            txtIRPFMan.setText("")
-            txtIRPFMan.setEnabled(false)
-            cmbSituacion.setEnabled(true)
-            txtGradoDis.setEnabled(true)
-            txtDescend.setEnabled(true)
-            txtDescMen3.setEnabled(true)
-            ckbRedViv.setEnabled(true)
+            this.txtIRPFMan.setText("")
+            this.txtIRPFMan.setEnabled(false)
+            this.cmbSituacion.setEnabled(true)
+            this.txtGradoDis.setEnabled(true)
+            this.txtDescend.setEnabled(true)
+            this.txtDescMen3.setEnabled(true)
+            this.ckbRedViv.setEnabled(true)
         }
 
     }
 
     private fun cargarDatos(usuario: User){
         if (usuario.FuerzaRetencion) {
-            txtIRPFMan.setEnabled(true)
-            cmbSituacion.setEnabled(false)
-            txtGradoDis.setEnabled(false)
-            txtDescend.setEnabled(false)
-            txtDescMen3.setEnabled(false)
-            ckbRedViv.setChecked(false)
-            ckbRedViv.setEnabled(false)
+            this.txtIRPFMan.setEnabled(true)
+            this.cmbSituacion.setEnabled(false)
+            this.txtGradoDis.setEnabled(false)
+            this.txtDescend.setEnabled(false)
+            this.txtDescMen3.setEnabled(false)
+            this.ckbRedViv.setChecked(false)
+            this.ckbRedViv.setEnabled(false)
         }else{
-            txtIRPFMan.setEnabled(false)
-            txtIRPFMan.setEnabled(false)
-            cmbSituacion.setEnabled(true)
-            txtGradoDis.setEnabled(true)
-            txtDescend.setEnabled(true)
-            txtDescMen3.setEnabled(true)
-            ckbRedViv.setEnabled(true)
+            this.txtIRPFMan.setEnabled(false)
+            this.txtIRPFMan.setEnabled(false)
+            this.cmbSituacion.setEnabled(true)
+            this.txtGradoDis.setEnabled(true)
+            this.txtDescend.setEnabled(true)
+            this.txtDescMen3.setEnabled(true)
+            this.ckbRedViv.setEnabled(true)
         }
-        txtHoras.setText(usuario.Horas)
-        cmbSituacion.setSelection(usuario.SituacionFamiliar)
-        txtGradoDis.setText(usuario.GradoDiscapacidad)
-        txtDescMen3.setText(usuario.NumDescendientesMenores3)
-        txtDescend.setText(usuario.NumDescendientesMayores3)
-        ckbRedViv.setChecked(usuario.ReduccionVivienda)
+        this.txtHoras.setText(usuario.Horas.toString())
+        this.cmbSituacion.setSelection(usuario.SituacionFamiliar)
+        this.txtGradoDis.setText(usuario.GradoDiscapacidad.toString())
+        this.txtDescMen3.setText(usuario.NumDescendientesMenores3.toString())
+        this.txtDescend.setText(usuario.NumDescendientesMayores3.toString())
+        this.ckbRedViv.setChecked(usuario.ReduccionVivienda)
     }
 }
