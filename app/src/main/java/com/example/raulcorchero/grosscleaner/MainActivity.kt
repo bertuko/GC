@@ -20,10 +20,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Setting::class.java)
             startActivity(intent)
         }
-        lblBruto.visibility = 0
-        lblExtra.visibility = 0
-        txtExtra.visibility = 0
-        txtNeto.visibility = 0
+
     }
 
     override fun onStop() {
@@ -35,6 +32,15 @@ class MainActivity : AppCompatActivity() {
         usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
 
         u.saveUserdata(usuario)
+    }
+
+    private fun MostrarCamposResultado(mostrar: Boolean) {
+        var stat: Int = View.INVISIBLE
+        if (mostrar) { stat = View.VISIBLE }
+        lblNeto.visibility = stat
+        lblExtra.visibility = stat
+        txtNeto.visibility = stat
+        txtExtra.visibility = stat
     }
 
     fun calcular (v: View){
@@ -49,8 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
             // Llamar al calculo
-            val c: Calculation = Calculation(usuario)
-            c.Calculate()
+            ShowDataInActivity ( (Calculation(usuario)).Calculate(), usuario )
         } else {
             var msg: String = ""
             if (usuario.ImporteBruto != 0f ) {
@@ -61,6 +66,13 @@ class MainActivity : AppCompatActivity() {
             showAlert("Atención!", msg)
         }
 
+    }
+
+    private fun ShowDataInActivity (oDetails: Detail, oUser: User) {
+        this.ImporteBruto.setText( oUser.ImporteBruto.toString() )
+        this.NumPagas.setText ( oUser.NumPagas.toString() )
+        this.txtNeto.setText( oDetails.PagaMensual.toString() )
+        this.txtExtra.setText( oDetails.PagaExtra.toString() )
     }
 
     fun initalizeValue (datastring: String): String{
