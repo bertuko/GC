@@ -4,13 +4,6 @@ package com.example.raulcorchero.grosscleaner
  * Created by raul.palomares on 12/05/2016.
  */
 class Calculation (){
-/*
-    val oConfig : Configuration = Configuration(true)
-    val ConfigIRPF: Configuration_IRPF = Configuration_IRPF();
-    val ConfigContribution:  Configuration_Contribution = Configuration_Contribution();
-    val CalculateIRPF: Calculation_IRPF = Calculation_IRPF();
-    val CalculateContribution: Calculation_Contribution = Calculation_Contribution();*/
-    val CalculateDetail: Detail = Detail();
     var oUser: User = User()
 
     constructor (_oUser: User) : this() {
@@ -21,9 +14,14 @@ class Calculation (){
         val oConfig : Configuration = Configuration(true)
         var oContribution : Calculation_Contribution = Calculation_Contribution(oConfig, this.oUser)
         var oIRPF : Calculation_IRPF = Calculation_IRPF(oConfig, this.oUser)
+        var oDetail: Detail = Detail()
+        var fBrutoPorPaga: Float = this.oUser.ImporteBruto / this.oUser.NumPagas
 
+        oDetail.CuotaCotizaciones = oContribution.Calc(false)
+        oDetail.PagaMensual = fBrutoPorPaga - (oDetail.CuotaCotizaciones + (fBrutoPorPaga * oIRPF.TIPO ) )
+        oDetail.PagaExtra = fBrutoPorPaga - ( fBrutoPorPaga * oIRPF.TIPO )
 
-        return CalculateDetail
+        return oDetail
     }
 }
 
