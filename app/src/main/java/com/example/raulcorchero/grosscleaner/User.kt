@@ -9,6 +9,7 @@ class User () {
     var FuerzaRetencion: Boolean = false
     var PorcentajeRetencion: Int = 0
     var ReduccionVivienda: Boolean = false
+    // 1: Disc32, 2: Disc33a65, 3: Disc66
     var EscalaDiscapacidad: Int = 1
     var MovilPerceptor: Boolean = false
     // Datos paga
