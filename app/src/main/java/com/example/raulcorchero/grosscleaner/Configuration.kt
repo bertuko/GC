@@ -7,6 +7,10 @@ class Configuration () {
     val IRPF: Configuration_IRPF = Configuration_IRPF();
     val Contribution:  Configuration_Contribution = Configuration_Contribution();
 
+    constructor(bLoad: Boolean) : this() {
+        this.get()
+    }
+
     fun get () {
         IRPF.Year = 2016
         IRPF.AnnualLimitMax = 22000.00f
