@@ -18,20 +18,13 @@ class MainActivity : AppCompatActivity() {
         var u = Utilities(this.getBaseContext())
         if (!u.ExistsUserdata()){
             val intent = Intent(this@MainActivity, Setting::class.java)
-            //startActivity(intent)
+            startActivity(intent)
         }
 
     }
 
-    override fun onStop() {
-        var u = Utilities(this.getBaseContext())
-        var usuario: User = u.LoadUserdata()
-
-        //Recuperamos datos de la pantalla al usuario
-        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
-        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
-
-        u.saveUserdata(usuario)
+    override fun onPause () {
+        var usuario: User = grabarDatospantalla()
     }
 
     private fun MostrarCamposResultado(mostrar: Boolean) {
@@ -44,16 +37,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calcular (v: View){
-        var u = Utilities(v.context)
-        var usuario: User = u.LoadUserdata()
+        var usuario: User = grabarDatospantalla()
 
-        //Recuperamos datos de la pantalla al usuario
-        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
-        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
-
-        u.saveUserdata(usuario)
-
-        if ((usuario.ImporteBruto != 0f && usuario.ImporteBruto < 1000000 ) && (usuario.NumPagas != 0)){
+        if ((usuario.ImporteBruto != 0f && usuario.ImporteBruto < 1000000 ) && (usuario.NumPagas >= 12)){
             // Llamar al calculo
             ShowDataInActivity ( (Calculation(usuario)).Calculate(), usuario )
         } else {
@@ -95,4 +81,16 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun grabarDatospantalla(): User {
+        var u = Utilities(this.getBaseContext())
+        var usuario: User = u.LoadUserdata()
+
+        //Recuperamos datos de la pantalla al usuario
+        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
+        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
+
+        u.saveUserdata(usuario)
+
+        return usuario
+    }
 }
