@@ -11,6 +11,14 @@ class Utilities {
         this.oContext = c
     }
 
+    fun GetConfiguration () {
+        var oXML = oContext.resources.openRawResource (R.xml.tables_configuration)
+
+        var p = 0
+
+    }
+
+
     public fun saveUserdata(usuario: User) {
         val filename: String = oContext.resources.getString(R.string.userDataFileName)
         val file: File = File(this.oContext.getFilesDir(), filename)
@@ -28,6 +36,13 @@ class Utilities {
         var usuario: User = mapper.readValue<User>(isr.readText())
         return usuario
     }
+
+    public fun ExistsUserdata() : Boolean {
+        val filename: String = oContext.resources.getString(R.string.userDataFileName)
+        val file: File = File(this.oContext.getFilesDir(), filename);
+        return file.exists();
+    }
+
 
     /*
     public fun saveSharedPreferences(usuario: User) {
