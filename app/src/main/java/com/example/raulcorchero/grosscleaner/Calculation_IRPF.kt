@@ -48,14 +48,14 @@ class Calculation_IRPF () {
         var Limit :Float = 0.00f;
         if (Perceptor.ImporteBruto <= ConfigIRPF.AnnualLimitMax) {
             when (Perceptor.SituacionFamiliar) {
-                TipoSituacionFamiliar.Sit1 -> {
+                1 -> {
                     if (NumDesc == 1)
                         Limit = (Perceptor.ImporteBruto - (IRPFQLimits.FamilySituations.get(0).Desc1)) * 0.43f
                     else
                         if (NumDesc > 1)
                             Limit = (Perceptor.ImporteBruto - (IRPFQLimits.FamilySituations.get(0).Desc2)) * 0.43f
                 }
-                TipoSituacionFamiliar.Sit2 -> {
+                2 -> {
                     if (NumDesc == 0)
                         Limit = (Perceptor.ImporteBruto - (IRPFQLimits.FamilySituations.get(1).Desc0)) * 0.43f
                     else {
@@ -89,7 +89,7 @@ class Calculation_IRPF () {
         NumDesc =0// getNumDescendent()
         if (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
-                TipoSituacionFamiliar.Sit1->{
+                1 ->{
                     if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc1)){
                         Exento = true
                     } else {
@@ -97,7 +97,7 @@ class Calculation_IRPF () {
                             Exento = true
                     }
                 }
-                TipoSituacionFamiliar.Sit2 -> {
+                2 -> {
                     if ((NumDesc == 0) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc0)){
                         Exento = true
                     } else {
@@ -109,7 +109,7 @@ class Calculation_IRPF () {
                         }
                     }
                 }
-                TipoSituacionFamiliar.Sit3 -> {
+                3 -> {
                     if ((NumDesc == 0) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc0)){
                         Exento = true
                     } else {

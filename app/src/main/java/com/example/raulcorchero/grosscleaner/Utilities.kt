@@ -19,12 +19,25 @@ class Utilities {
     }
 
     public fun saveUserdata(usuario: User) {
-        //val filename: String = oContext.resources.getString(R.string.userDataFileName)
-        //val file: File = File(this.oContext.getFilesDir(), filename)
-        //var outputStream: FileOutputStream = this.oContext.openFileOutput(filename, Context.MODE_PRIVATE);
-        //val mapper = jacksonObjectMapper()
-        //mapper.writeValue(outputStream, usuario)
-        //outputStream.close();
+        val filename: String = oContext.resources.getString(R.string.userDataFileName)
+        val file: File = File(this.oContext.getFilesDir(), filename)
+        var outputStream: FileOutputStream = this.oContext.openFileOutput(filename, Context.MODE_PRIVATE);
+        val mapper = jacksonObjectMapper()
+        mapper.writeValue(outputStream, usuario)
+        outputStream.close();
+    }
+
+    public fun LoadUserdata() : User {
+        val filename: String = oContext.resources.getString(R.string.userDataFileName)
+        var fis: FileInputStream = this.oContext.openFileInput(filename)
+        var isr: InputStreamReader = InputStreamReader(fis)
+        val mapper = jacksonObjectMapper()
+        var usuario: User = mapper.readValue<User>(isr.readText())
+        return usuario
+    }
+
+    /*
+    public fun saveSharedPreferences(usuario: User) {
         val sharedPref: SharedPreferences = oContext.getSharedPreferences(oContext.resources.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor  = sharedPref.edit()
         editor.putBoolean("PrimeraCarga", false)
@@ -39,18 +52,9 @@ class Utilities {
         editor.putInt("SituacionFamiliar", usuario.SituacionFamiliar)
         editor.putBoolean("FuerzaRetencion", usuario.FuerzaRetencion)
         editor.commit()
-
     }
 
-    public fun LoadUserdata() : User {
-//        val filename: String = oContext.resources.getString(R.string.userDataFileName)
-//        var fis: FileInputStream = this.oContext.openFileInput(filename)
-//        var isr: InputStreamReader = InputStreamReader(fis)
-//        val mapper = jacksonObjectMapper()
-//        //var usuario: User = mapper.readValue(isr.readText(), User)
-//        val json: String =  isr.readText()
-//        var usuario: DataUser = mapper.readValue<DataUser>(json)
-//        return usuario
+    public fun loadSharedPreferences(): User {
         var usuario: User = User()
         val sharedPref: SharedPreferences = oContext.getSharedPreferences(oContext.resources.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor  = sharedPref.edit()
@@ -67,4 +71,5 @@ class Utilities {
         usuario.FuerzaRetencion = sharedPref.getBoolean("FuerzaRetencion", false)
         return usuario
     }
+    */
 }
