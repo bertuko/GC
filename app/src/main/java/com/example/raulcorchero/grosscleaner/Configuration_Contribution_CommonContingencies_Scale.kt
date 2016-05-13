@@ -1,8 +1,15 @@
 package com.example.raulcorchero.grosscleaner
 
 class Configuration_Contribution_CommonContingencies_Scale {
-    val Code: Int = 1
-    val Max: Float = 3642.00f
-    val Min: Float = 764.00f
-    val Hour: Float = 4.60f
+    var Code: Int = 1
+    var Max: Float = 3642.00f
+    var Min: Float = 764.00f
+    var Hour: Float = 4.60f
+
+    constructor (_Code: Int, _Max: Float, _Min: Float, _Hour: Float) {
+        Code = _Code
+        Max = _Max
+        Min = _Min
+        Hour = _Hour
+    }
 }
