@@ -9,6 +9,11 @@ class Configuration_IRPF () {
     val HomeDeductionsMaxAmount: Float = 33007.20f
     val HomeDeductionPercentage: Int = 2
     val ExpensesGeneral: Float = 2000.00f
+    val BaseRedJobMax: Float = 11250.00f
+    val RedJobMax: Float = 3700.00f
+    val BaseRedJobMin: Float = 14450.00f
+    val RedJobMin: Float = 0.00f
+    val CoefRedJob = 1.15625f
 
     val QuantitativeLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits()
     val Descendants: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants()

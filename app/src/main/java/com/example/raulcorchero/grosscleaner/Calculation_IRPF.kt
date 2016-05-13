@@ -2,10 +2,6 @@ package com.example.raulcorchero.grosscleaner
 
 import java.text.DecimalFormat
 
-
-/**
- * Created by raul.palomares on 12/05/2016.
- */
 class Calculation_IRPF () {
     var MINOPAGO: Float = 0.00f;
     var MINPERFA: Float = 0.00f;
@@ -27,7 +23,17 @@ class Calculation_IRPF () {
     var DESEM: Float = 0.00f;
     var CONYUGE: Float = 0.00f;
     var RNTREDU: Float = 0.00f;
-
+    var GASTOSGEN: Float = 0.00f;
+    var INCREGASDISTRA: Float = 0.00f;
+    var INCREGASMOVIL: Float = 0.00f;
+    var OTRASGASTOS: Float = 0.00f;
+    var GASTOS: Float = 0.00f;
+    var RNT: Float = 0.00f;
+    var RETRIB: Float = 0.00f;
+    var IRREGULAR1: Float = 0.00f;
+    var IRREGULAR2: Float = 0.00f;
+    var COTIZACIONES: Float = 0.00f;
+    var RED20 : Float = 0.00f;
 
     fun getMinoPago () {
         if (Perceptor.ImporteBruto < ConfigIRPF.HomeDeductionsMaxAmount && Perceptor.ReduccionVivienda == true)
@@ -48,14 +54,14 @@ class Calculation_IRPF () {
         var Limit :Float = 0.00f;
         if (Perceptor.ImporteBruto <= ConfigIRPF.AnnualLimitMax) {
             when (Perceptor.SituacionFamiliar) {
-                TipoSituacionFamiliar.Sit1 -> {
+                1 -> {
                     if (NumDesc == 1)
                         Limit = (Perceptor.ImporteBruto - (IRPFQLimits.FamilySituations.get(0).Desc1)) * 0.43f
                     else
                         if (NumDesc > 1)
                             Limit = (Perceptor.ImporteBruto - (IRPFQLimits.FamilySituations.get(0).Desc2)) * 0.43f
                 }
-                TipoSituacionFamiliar.Sit2 -> {
+                2 -> {
                     if (NumDesc == 0)
                         Limit = (Perceptor.ImporteBruto - (IRPFQLimits.FamilySituations.get(1).Desc0)) * 0.43f
                     else {
@@ -89,34 +95,34 @@ class Calculation_IRPF () {
         NumDesc =0// getNumDescendent()
         if (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
-                TipoSituacionFamiliar.Sit1->{
-                    if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc1)){
+                1 ->{
+                    if ((NumDesc == 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc1)){
                         Exento = true
                     } else {
-                        if ((NumDesc > 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc2))
+                        if ((NumDesc > 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(0).Desc2))
                             Exento = true
                     }
                 }
-                TipoSituacionFamiliar.Sit2 -> {
-                    if ((NumDesc == 0) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc0)){
+                2 -> {
+                    if ((NumDesc == 0) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc0)){
                         Exento = true
                     } else {
-                        if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc1)) {
+                        if ((NumDesc == 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc1)) {
                             Exento = true
                         }else{
-                            if ((NumDesc > 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2))
+                            if ((NumDesc > 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(1).Desc2))
                                 Exento = true
                         }
                     }
                 }
-                TipoSituacionFamiliar.Sit3 -> {
-                    if ((NumDesc == 0) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc0)){
+                3 -> {
+                    if ((NumDesc == 0) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc0)){
                         Exento = true
                     } else {
-                        if ((NumDesc == 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc1)) {
+                        if ((NumDesc == 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc1)) {
                             Exento = true
                         }else{
-                            if ((NumDesc > 1) and (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc2))
+                            if ((NumDesc > 1) && (Perceptor.ImporteBruto <= IRPFQLimits.FamilySituations.get(2).Desc2))
                                 Exento = true
                         }
                     }
@@ -161,5 +167,45 @@ class Calculation_IRPF () {
             BASE=0.00f
         }
     }
+    fun getGeneralExpenses (){
+        GASTOSGEN = ConfigIRPF.ExpensesGeneral
+    }
 
+    fun getEmployeeDisability (){
+        // 1: Disc32, 2: Disc33a65, 3: Disc66
+        if((Perceptor.EscalaDiscapacidad == 3) || (Perceptor.EscalaDiscapacidad == 2 && (Perceptor.MovilPerceptor == true))){
+            INCREGASDISTRA = ConfigIRPF.DisAmountMore65
+        }else{
+            INCREGASDISTRA = ConfigIRPF.DisWithoutHelp
+        }
+    }
+    fun getTotalOtherExpenses () {
+        OTRASGASTOS = GASTOSGEN+INCREGASDISTRA+INCREGASMOVIL
+        if ((Perceptor.ImporteBruto-COTIZACIONES) < 0){
+            OTRASGASTOS = 0.00f
+        }
+        if (OTRASGASTOS > (Perceptor.ImporteBruto - COTIZACIONES)){
+            OTRASGASTOS = Perceptor.ImporteBruto - COTIZACIONES
+        }
+    }
+    fun getDeductions(){
+        GASTOS = COTIZACIONES+OTRASGASTOS
+    }
+    fun getNetRetribution (){
+        RNT = RETRIB-(IRREGULAR1+IRREGULAR2+COTIZACIONES)
+        if (RNT<0) {
+            RNT = 0.00f
+        }
+    }
+    fun getDeductionGeneral(){
+        if(RNT<=ConfigIRPF.BaseRedJobMax){
+            RED20 = ConfigIRPF.RedJobMax
+        }else{
+            if (RNT<=ConfigIRPF.BaseRedJobMin){
+                RED20 = (ConfigIRPF.RedJobMin - (ConfigIRPF.CoefRedJob * (RNT-ConfigIRPF.RedJobMax)))
+            } else {
+                RED20 = 0.00f
+            }
+        }
+    }
 }

@@ -9,11 +9,11 @@ class User () {
     var FuerzaRetencion: Boolean = false
     var PorcentajeRetencion: Int = 0
     var ReduccionVivienda: Boolean = false
-
+    var EscalaDiscapacidad: Int = 1
+    var MovilPerceptor: Boolean = false
     // Datos paga
     var ImporteBruto: Float = 0f
     var NumPagas: Int = 12
-
 }
 
 //data class DataUser (

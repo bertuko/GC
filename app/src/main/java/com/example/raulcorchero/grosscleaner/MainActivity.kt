@@ -1,6 +1,5 @@
 package com.example.raulcorchero.grosscleaner
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,14 +12,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun calcular (v: View) {
+    fun calcular (v: View){
+        txtNeto.setText("prueba")
+        var usuario: User = User()
+        usuario.ImporteBruto = 10000f
         var u = Utilities(v.context)
+        u.saveUserdata(usuario)
 
-        u.GetConfiguration()
-    }
-
-    fun btnDetalle (v: View) {
-        val i = Intent(this@MainActivity, Setting::class.java)
-        startActivity(i)
+        var usuario2: User = u.LoadUserdata()
     }
 }
