@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import kotlinx.android.synthetic.main.activity_setting.*
-import org.jetbrains.anko.support.v4.__ViewPager_OnPageChangeListener
 
 class Setting : AppCompatActivity() {
 
@@ -24,24 +23,21 @@ class Setting : AppCompatActivity() {
                                     "Con cónyugue (ingresos de este <1500 euros al año",
                                     "Otros")
         val s = findViewById(R.id.cmbSituacion) as Spinner
-
         val adapter = ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner)
         s.adapter = adapter
 
-        //var usuario: User = User()
-        //var u = Utilities(this.getBaseContext())
-        //if (u.ExistsUserdata()){
-        //    usuario = u.LoadUserdata()
-        //}
+        var u = Utilities(this.getBaseContext())
+        if (u.ExistsUserdata()){
+            cargarDatos(u.LoadUserdata())
+        } else {
+            cargarDatos(User())
+        }
 
-        //Mostramos los datos en la pantalla
-        //cargarDatos(usuario)
     }
 
     override fun onPause () {
         super.onPause()
-
         var usuario: User = User()
         //Recuperamos datos de la pantalla al usuario
         usuario.FuerzaRetencion = this.tbIRPF.isChecked()
@@ -53,7 +49,6 @@ class Setting : AppCompatActivity() {
         usuario.NumDescendientesMenores3 = initalizeValue(this.txtDescMen3.getText().toString()).toInt()
         usuario.NumDescendientesMayores3 = initalizeValue(this.txtDescend.getText().toString()).toInt()
         usuario.ReduccionVivienda = this.ckbRedViv.isChecked()
-
 
         var u = Utilities(this.getBaseContext())
         u.saveUserdata(usuario)

@@ -1,7 +1,6 @@
 package com.example.raulcorchero.grosscleaner
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,17 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onStop() {
-        super.onStop()
-
-        var u = Utilities(this.getBaseContext())
-        var usuario: User = u.LoadUserdata()
-
-        //Recuperamos datos de la pantalla al usuario
-        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
-        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
-
-        u.saveUserdata(usuario)
+    override fun onPause () {
+        super.onPause()
+        var usuario: User = grabarDatospantalla()
     }
 
     private fun MostrarCamposResultado(mostrar: Boolean) {
@@ -46,16 +38,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calcular (v: View){
-        var u = Utilities(v.context)
-        var usuario: User = u.LoadUserdata()
+        var usuario: User = grabarDatospantalla()
 
-        //Recuperamos datos de la pantalla al usuario
-        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
-        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
-
-        u.saveUserdata(usuario)
-
-        if ((usuario.ImporteBruto != 0f && usuario.ImporteBruto < 1000000 ) && (usuario.NumPagas != 0)){
+        if ((usuario.ImporteBruto != 0f && usuario.ImporteBruto < 1000000 ) && (usuario.NumPagas >= 12)){
             // Llamar al calculo
             ShowDataInActivity ( (Calculation(usuario)).Calculate(), usuario )
         } else {
@@ -80,13 +65,13 @@ class MainActivity : AppCompatActivity() {
         this.txtExtra.setText( oDetails.PagaExtra.toInt().toString() )
     }
 
-    private fun initalizeValue (datastring: String): String{
+    fun initalizeValue (datastring: String): String{
         var r: String = datastring.trim()
         if (r == "") {r = "0"}
         return r
     }
 
-    private fun showAlert (title: String, message: String){
+    fun showAlert (title: String, message: String){
         alert(message, title) {
             positiveButton("Aceptar") { }
         }.show()
@@ -97,4 +82,16 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun grabarDatospantalla(): User {
+        var u = Utilities(this.getBaseContext())
+        var usuario: User = u.LoadUserdata()
+
+        //Recuperamos datos de la pantalla al usuario
+        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
+        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
+
+        u.saveUserdata(usuario)
+
+        return usuario
+    }
 }
