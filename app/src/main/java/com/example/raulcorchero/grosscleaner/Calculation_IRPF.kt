@@ -170,7 +170,7 @@ class Calculation_IRPF () {
 
     fun getEmployeeDisability (){
         // 1: Disc32, 2: Disc33a65, 3: Disc66
-        if((Perceptor.EscalaDiscapacidad == 3) || (Perceptor.EscalaDiscapacidad == 2 && (Perceptor.MovilPerceptor == true))){
+        if(Perceptor.EscalaDiscapacidad == 3 || (Perceptor.EscalaDiscapacidad == 2 && (Perceptor.MovilPerceptor == true))){
             INCREGASDISTRA = ConfigIRPF.DisAmountMore65
         }else{
             INCREGASDISTRA = ConfigIRPF.DisWithoutHelp

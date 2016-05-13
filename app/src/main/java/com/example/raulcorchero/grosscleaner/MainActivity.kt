@@ -1,8 +1,10 @@
 package com.example.raulcorchero.grosscleaner
 
+import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,12 +15,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calcular (v: View){
-        txtNeto.setText("prueba")
-        var usuario: User = User()
-        usuario.ImporteBruto = 10000f
         var u = Utilities(v.context)
+        var usuario: User = u.LoadUserdata()
+        usuario.ImporteBruto = this.ImporteBruto.getText().toString().toFloat()
+        usuario.NumPagas = this.NumPagas.getText().toString().toInt()
         u.saveUserdata(usuario)
 
-        var usuario2: User = u.LoadUserdata()
+        if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
+            // Llamar al calculo
+            val c: Calculation = Calculation()
+            c.Calculate()
+        } else {
+            //mensaje de aviso... Hay que introducir importes o si no...
+
+        }
+
     }
 }
