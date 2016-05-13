@@ -14,7 +14,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        lblBruto.visibility = 0
+        lblExtra.visibility = 0
+        txtExtra.visibility = 0
+        txtNeto.visibility = 0
     }
 
     fun calcular (v: View){
