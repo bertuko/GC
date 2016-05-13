@@ -9,8 +9,6 @@ import kotlinx.android.synthetic.main.activity_setting.*
 
 class Setting : AppCompatActivity() {
 
-    var usuario: User = User()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
@@ -29,18 +27,18 @@ class Setting : AppCompatActivity() {
                 android.R.layout.simple_spinner_item, arraySpinner)
         s.adapter = adapter
 
-
+        var usuario: User = User()
         var u = Utilities(this.getBaseContext())
         if (u.ExistsUserdata()){
             usuario = u.LoadUserdata()
         }
 
         //Mostramos los datos en la pantalla
+        cargarDatos(usuario)
     }
 
     override fun onPause () {
-
-
+        var usuario: User = User()
         //Recuperamos datos de la pantalla al usuario
         usuario.FuerzaRetencion = this.tbIRPF.isChecked()
         usuario.PorcentajeRetencion = initalizeValue(this.txtIRPFMan.getText().toString()).toFloat()
@@ -48,6 +46,9 @@ class Setting : AppCompatActivity() {
         usuario.SituacionFamiliar = this.cmbSituacion.selectedItemPosition
         //usuario.EscalaDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
         usuario.GradoDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
+        usuario.NumDescendientesMenores3 = initalizeValue(this.txtDescMen3.getText().toString()).toInt()
+        usuario.NumDescendientesMayores3 = initalizeValue(this.txtDescend.getText().toString()).toInt()
+        usuario.ReduccionVivienda = this.ckbRedViv.isChecked()
 
 
         var u = Utilities(this.getBaseContext())
@@ -82,5 +83,31 @@ class Setting : AppCompatActivity() {
             ckbRedViv.setEnabled(true)
         }
 
+    }
+
+    private fun cargarDatos(usuario: User){
+        if (usuario.FuerzaRetencion) {
+            txtIRPFMan.setEnabled(true)
+            cmbSituacion.setEnabled(false)
+            txtGradoDis.setEnabled(false)
+            txtDescend.setEnabled(false)
+            txtDescMen3.setEnabled(false)
+            ckbRedViv.setChecked(false)
+            ckbRedViv.setEnabled(false)
+        }else{
+            txtIRPFMan.setEnabled(false)
+            txtIRPFMan.setEnabled(false)
+            cmbSituacion.setEnabled(true)
+            txtGradoDis.setEnabled(true)
+            txtDescend.setEnabled(true)
+            txtDescMen3.setEnabled(true)
+            ckbRedViv.setEnabled(true)
+        }
+        txtHoras.setText(usuario.Horas)
+        //cmbSituacion.setIndex(usuario.SituacionFamiliar)
+        txtGradoDis.setText(usuario.GradoDiscapacidad)
+        txtDescMen3.setText(usuario.NumDescendientesMenores3)
+        txtDescend.setText(usuario.NumDescendientesMayores3)
+        ckbRedViv.setChecked(usuario.ReduccionVivienda)
     }
 }

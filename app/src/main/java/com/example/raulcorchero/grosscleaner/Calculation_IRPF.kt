@@ -3,16 +3,17 @@ package com.example.raulcorchero.grosscleaner
 import java.text.DecimalFormat
 
 class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
+    var ConfigIRPF: Configuration_IRPF = oConfig.IRPF
+    var IRPFDesc: Configuration_IRPF_Descendants = ConfigIRPF.Descendants;
+    var IRPFQLimits: Configuration_IRPF_QuantitativeLimits = ConfigIRPF.QuantitativeLimits;
+    var CalcContribution : Calculation_Contribution = Calculation_Contribution(oConfig, oUser)
+    var Perceptor: User = oUser;
     var MINOPAGO: Float = 0.00f;
     var MINPERFA: Float = 0.00f;
     var CUOTA: Float = 0.00f;
     var CUOTA1: Float = 0.00f;
     var CUOTA2: Float = 0.00f;
     var TIPO: Float = 0.00f;
-    var ConfigIRPF: Configuration_IRPF = oConfig.IRPF
-    var IRPFDesc: Configuration_IRPF_Descendants = ConfigIRPF.Descendants;
-    var IRPFQLimits: Configuration_IRPF_QuantitativeLimits = ConfigIRPF.QuantitativeLimits;
-    var Perceptor: User = oUser;
     var BASE: Float = 0.00f;
     var REDU: Float = 0.00f;
     var PENSION: Float = 0.00f;
@@ -37,6 +38,12 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
     var MINDESG : Float = 0.00f;
     var MINDES3 : Float = 0.00f;
     var MINDES : Float = 0.00f;
+    var DISPER : Float = 0.00f;
+    var ASISPER : Float = 0.00f;
+    var MINDISC : Float = 0.00f;
+    var MDISDEAS : Float = 0.00f;
+    var MINDIS : Float = 0.00f;
+    var MINAS : Float = 0.00f;
 
 
 
@@ -45,15 +52,21 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         getRetribution()
         getContribution()
         getDeductions()
+        getBase()
+        if (!getExent()){
+            getQuota()
+            getApliLimit43()
+        }
+        getRetention()
         return TIPO
     }
 
-    fun getRetribution (){
+    fun getRetribution(){
         RETRIB = Perceptor.ImporteBruto
     }
 
     fun getContribution (){
-//        COTIZACIONES = CalcContribution.Calculate(RETRIB)
+        COTIZACIONES = CalcContribution.Calc(true)
     }
 
     fun getDeductions(){
@@ -67,14 +80,38 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
 
     fun getMinPersonalFamiliar(){
         getMinTaxpayer()
-        getMinDescendats()
-//        getMinDisability()
+        getMinDescendens()
+        getMinDisability()
+        MINDIS = MINDISC + MDISDEAS
+        MINPERFA = MINCON+MINDES+MINDIS+MINAS
     }
 
-    fun getMinDescendats(){
+    fun getMinDescendens(){
         getMinDesc25()
         getMinDesc3()
         MINDES = MINDESG + MINDES3
+    }
+
+    fun getMinDisability(){
+        MINDISC = 0f
+        getMinDisabilityTaxpayer()
+        getMinDisAsist()
+        MINDISC = ASISPER + DISPER
+    }
+
+    fun getMinDisabilityTaxpayer() {
+        when (Perceptor.EscalaDiscapacidad ) {
+            3 -> DISPER = ConfigIRPF.MinDis65
+            2 -> DISPER = ConfigIRPF.MinDis3365
+            else -> DISPER = 0f
+        }
+    }
+
+    fun getMinDisAsist() {
+        ASISPER = 0f
+        if (Perceptor.EscalaDiscapacidad == 3 || (Perceptor.EscalaDiscapacidad == 2 && Perceptor.MovilPerceptor) ) {
+            ASISPER = ConfigIRPF.MinAsisPer
+        }
     }
 
     fun getReductionRetributionJob(){
@@ -122,15 +159,23 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
 
     fun getMinoPago () {
         if (RETRIB < ConfigIRPF.HomeDeductionsMaxAmount && Perceptor.ReduccionVivienda == true)
-            MINOPAGO = Perceptor.ImporteBruto * ConfigIRPF.HomeDeductionPercentage
+            MINOPAGO = getRound(Perceptor.ImporteBruto * ConfigIRPF.HomeDeductionPercentage)
         else
             MINOPAGO = 0f
-
     }
 
-    fun getTipoRetencion (){
+    fun getRetention(){
+        getMinoPago()
+        getPercRetention()
+    }
 
-        TIPO = (CUOTA-MINOPAGO)/RETRIB
+    fun getPercRetention (){
+        var dif: Float = 0f
+        dif = CUOTA-MINOPAGO
+        if (dif<0) {
+            dif = 0f
+        }
+        TIPO = dif/RETRIB
         TIPO = getRound(TIPO)
     }
 
@@ -140,7 +185,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         return ImporteFloat
     }
 
-    fun ApliLimit43 (){
+    fun getApliLimit43 (){
 
         var Limit :Float = 0.00f;
         if (RETRIB <= ConfigIRPF.AnnualLimitMax) {
@@ -180,7 +225,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getExent() {
+    fun getExent(): Boolean {
         var Exento:Boolean = false;
         if (RETRIB <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
@@ -221,7 +266,9 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         if (Exento == true) {
             CUOTA = 0.00f
             TIPO = 0.00f
-        }
+            return true
+        }else
+            return false
     }
 
     fun getQuota (){
