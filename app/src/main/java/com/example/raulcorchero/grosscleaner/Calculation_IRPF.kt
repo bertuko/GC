@@ -61,7 +61,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         return TIPO
     }
 
-    fun getRetribution{
+    fun getRetribution(){
         RETRIB = Perceptor.ImporteBruto
     }
 
