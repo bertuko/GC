@@ -26,11 +26,20 @@ class MainActivity : AppCompatActivity() {
         txtNeto.visibility = 0
     }
 
+    override fun onStop() {
+        var u = Utilities(this.getBaseContext())
+        var usuario: User = u.LoadUserdata()
+
+        //Recuperamos datos de la pantalla al usuario
+        usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
+        usuario.NumPagas = initalizeValue(this.NumPagas.getText().toString()).toInt()
+
+        u.saveUserdata(usuario)
+    }
+
     fun calcular (v: View){
         var u = Utilities(v.context)
         var usuario: User = u.LoadUserdata()
-        var sImporteBruto: String = this.ImporteBruto.getText().toString().trim()
-        var sNumPagas: String = this.NumPagas.getText().toString().trim()
 
         //Recuperamos datos de la pantalla al usuario
         usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
