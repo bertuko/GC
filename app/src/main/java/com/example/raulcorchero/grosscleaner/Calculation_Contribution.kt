@@ -21,12 +21,20 @@ class Calculation_Contribution (oConfig:  Configuration, oUser: User){
     var TOPMAX: Float = 0f
     var Perceptor: User = oUser
 
-
-
-    fun Calc (Amount:Float, Anual:Boolean):Float{
+    fun Calc (Anual:Boolean):Float{
         //Si me llega un amount Anual el multiplicador sera 1
         //si me llaga un amount Mensual el multiplicador sera 12
-        if (Anual) MULT = 1 else MULT = 12
+
+        var Amount: Float
+
+        if (Anual) {
+            MULT = 1
+            Amount = getMonthlyPayAmount (Perceptor.ImporteBruto, Perceptor.NumPagas)
+        } else {
+            MULT = 12
+            Amount = Perceptor.ImporteBruto
+        }
+
         TOPMIN = getTopMin()
         TOPMAX = getTopMax()
         BASE = Amount
@@ -39,10 +47,14 @@ class Calculation_Contribution (oConfig:  Configuration, oUser: User){
         return CuotaCC + CuotaFP + CuotaDes
     }
 
+    private fun getMonthlyPayAmount (ImporteBruto: Float, NumPagas: Int): Float {
+        return (((ImporteBruto / NumPagas) * ( NumPagas - 12 )) / 12)
+    }
+
     /**
      * Miramos si es Jornada parcial para modificarle el Minimo
      */
-    fun getTopMin(): Float{
+    private fun getTopMin(): Float{
         var min:Float = 0f
         if(Perceptor.Horas < 40) {
             min = (ConfigCCS.Min * ((Perceptor.Horas * 100)/40)) /100
@@ -55,7 +67,7 @@ class Calculation_Contribution (oConfig:  Configuration, oUser: User){
     /**
      * Miramos si es Jornada parcial para modificarle el Maximo
      */
-    fun getTopMax(): Float{
+    private fun getTopMax(): Float{
         var max:Float = 0f
         if(Perceptor.Horas < 40) {
             max = (ConfigCCS.Max * ((Perceptor.Horas * 100)/40)) /100
