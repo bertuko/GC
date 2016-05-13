@@ -190,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="3.000"
-                android:id="@+id/textView"
+                android:id="@+id/txtExtra"
                 android:layout_column="1"
                 android:layout_gravity="center"
                 android:textSize="70dp" />
@@ -216,7 +216,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btnDetalle"
                 android:id="@+id/btnDetalle"
-                android:layout_column="1" />
+                android:layout_column="1"
+                android:visibility="invisible" />
         </TableRow>
 
     </TableLayout>

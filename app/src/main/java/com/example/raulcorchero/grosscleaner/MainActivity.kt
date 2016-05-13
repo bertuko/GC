@@ -20,11 +20,17 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Setting::class.java)
             startActivity(intent)
         }
+        lblBruto.visibility = 0
+        lblExtra.visibility = 0
+        txtExtra.visibility = 0
+        txtNeto.visibility = 0
     }
 
     fun calcular (v: View){
         var u = Utilities(v.context)
         var usuario: User = u.LoadUserdata()
+        var sImporteBruto: String = this.ImporteBruto.getText().toString().trim()
+        var sNumPagas: String = this.NumPagas.getText().toString().trim()
 
         //Recuperamos datos de la pantalla al usuario
         usuario.ImporteBruto = initalizeValue(this.ImporteBruto.getText().toString()).toFloat()
@@ -32,9 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         u.saveUserdata(usuario)
 
-        if ((usuario.ImporteBruto != 0f ) || (usuario.NumPagas < 12)){
+        if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
             // Llamar al calculo
-            val c: Calculation = Calculation()
+            val c: Calculation = Calculation(usuario)
             c.Calculate()
         } else {
             var msg: String = ""
@@ -58,6 +64,8 @@ class MainActivity : AppCompatActivity() {
         alert(message, title) {
             positiveButton("Aceptar") { }
         }.show()
+    }
+
     }
 
     fun viewSettings(v: View){

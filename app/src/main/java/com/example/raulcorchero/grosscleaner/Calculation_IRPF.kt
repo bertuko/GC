@@ -2,17 +2,17 @@ package com.example.raulcorchero.grosscleaner
 
 import java.text.DecimalFormat
 
-class Calculation_IRPF () {
+class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
     var MINOPAGO: Float = 0.00f;
     var MINPERFA: Float = 0.00f;
     var CUOTA: Float = 0.00f;
     var CUOTA1: Float = 0.00f;
     var CUOTA2: Float = 0.00f;
     var TIPO: Float = 0.00f;
-    var ConfigIRPF: Configuration_IRPF = Configuration_IRPF();
-    var IRPFDesc: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants();
-    var IRPFQLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits();
-    var Perceptor: User = User();
+    var ConfigIRPF: Configuration_IRPF = oConfig.IRPF
+    var IRPFDesc: Configuration_IRPF_Descendants = ConfigIRPF.Descendants;
+    var IRPFQLimits: Configuration_IRPF_QuantitativeLimits = ConfigIRPF.QuantitativeLimits;
+    var Perceptor: User = oUser;
     var BASE: Float = 0.00f;
     var REDU: Float = 0.00f;
     var PENSION: Float = 0.00f;
@@ -48,12 +48,12 @@ class Calculation_IRPF () {
         return TIPO
     }
 
-    fun getRetribution{
+    fun getRetribution (){
         RETRIB = Perceptor.ImporteBruto
     }
 
     fun getContribution (){
-        COTIZACIONES = CalcContribution.Calculate(RETRIB)
+//        COTIZACIONES = CalcContribution.Calculate(RETRIB)
     }
 
     fun getDeductions(){
@@ -68,7 +68,7 @@ class Calculation_IRPF () {
     fun getMinPersonalFamiliar(){
         getMinTaxpayer()
         getMinDescendats()
-        getMinDisability()
+//        getMinDisability()
     }
 
     fun getMinDescendats(){

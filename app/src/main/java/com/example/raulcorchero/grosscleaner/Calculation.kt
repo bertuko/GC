@@ -11,10 +11,16 @@ class Calculation (){
     val CalculateIRPF: Calculation_IRPF = Calculation_IRPF();
     val CalculateContribution: Calculation_Contribution = Calculation_Contribution();*/
     val CalculateDetail: Detail = Detail();
+    var oUser: User = User()
+
+    constructor (_oUser: User) : this() {
+        this.oUser = _oUser
+    }
 
     fun Calculate(): Detail{
         val oConfig : Configuration = Configuration(true)
-        var oContribution : Calculation_Contribution = Calculation_Contribution(oConfig)
+        var oContribution : Calculation_Contribution = Calculation_Contribution(oConfig, this.oUser)
+        var oIRPF : Calculation_IRPF = Calculation_IRPF(oConfig, this.oUser)
 
 
         return CalculateDetail
