@@ -7,7 +7,7 @@ class User () {
     var NumDescendientesMenores3: Int = 0
     var NumDescendientesMayores3: Int = 0
     var FuerzaRetencion: Boolean = false
-    var PorcentajeRetencion: Int = 0
+    var PorcentajeRetencion: Float = 0f
     var ReduccionVivienda: Boolean = false
     var EscalaDiscapacidad: Int = 1
     var MovilPerceptor: Boolean = false

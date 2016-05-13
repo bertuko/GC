@@ -66,7 +66,7 @@
                     android:id="@+id/txtIRPFMan"
                     android:layout_weight="0.67"
                     android:layout_gravity="center_vertical|bottom"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </TableRow>
         </TableRow>
 

@@ -43,7 +43,7 @@ class Setting : AppCompatActivity() {
 
         //Recuperamos datos de la pantalla al usuario
         usuario.FuerzaRetencion = this.tbIRPF.isChecked()
-        usuario.PorcentajeRetencion = initalizeValue(this.txtIRPFMan.getText().toString()).toInt()
+        usuario.PorcentajeRetencion = initalizeValue(this.txtIRPFMan.getText().toString()).toFloat()
         usuario.Horas = initalizeValue(this.txtHoras.getText().toString()).toInt()
         usuario.SituacionFamiliar = this.cmbSituacion.selectedItemPosition
         //usuario.EscalaDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
