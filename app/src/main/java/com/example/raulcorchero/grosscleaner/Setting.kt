@@ -104,7 +104,7 @@ class Setting : AppCompatActivity() {
             ckbRedViv.setEnabled(true)
         }
         txtHoras.setText(usuario.Horas)
-        //cmbSituacion.setIndex(usuario.SituacionFamiliar)
+        cmbSituacion.setSelection(usuario.SituacionFamiliar)
         txtGradoDis.setText(usuario.GradoDiscapacidad)
         txtDescMen3.setText(usuario.NumDescendientesMenores3)
         txtDescend.setText(usuario.NumDescendientesMayores3)
