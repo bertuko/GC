@@ -206,8 +206,9 @@ class Calculation_IRPF () {
         }else{
             if (RNT<=ConfigIRPF.BaseRedJobMin){
                 RED20 = (ConfigIRPF.RedJobMin - (ConfigIRPF.CoefRedJob * (RNT-ConfigIRPF.RedJobMax)))
-            }else{
-            RED20 = 0.00f
+            } else {
+                RED20 = 0.00f
+            }
         }
     }
 }
