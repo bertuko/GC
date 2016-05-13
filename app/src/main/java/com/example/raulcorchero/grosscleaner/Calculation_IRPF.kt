@@ -11,10 +11,7 @@ class Calculation_IRPF () {
     var TIPO: Float = 0.00f;
     var ConfigIRPF: Configuration_IRPF = Configuration_IRPF();
     var IRPFDesc: Configuration_IRPF_Descendants = Configuration_IRPF_Descendants();
-    var IRPFDescsDesc: Configuration_IRPF_Descendants_Descendant = Configuration_IRPF_Descendants_Descendant();
     var IRPFQLimits: Configuration_IRPF_QuantitativeLimits = Configuration_IRPF_QuantitativeLimits();
-    var IRPFQLimitsFS: Configuration_IRPF_QuantitativeLimits_FamilySituations = Configuration_IRPF_QuantitativeLimits_FamilySituations();
-    var IRPFQLimitsSP: Configuration_IRPF_QuantitativeLimits_ScalePercentages = Configuration_IRPF_QuantitativeLimits_ScalePercentages();
     var Perceptor: User = User();
     var BASE: Float = 0.00f;
     var REDU: Float = 0.00f;

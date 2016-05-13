@@ -11,13 +11,6 @@ class Utilities {
         this.oContext = c
     }
 
-    fun GetConfiguration () {
-        var oXML = oContext.resources.openRawResource (R.xml.tables_configuration)
-
-        var p = 0
-
-    }
-
     public fun saveUserdata(usuario: User) {
         val filename: String = oContext.resources.getString(R.string.userDataFileName)
         val file: File = File(this.oContext.getFilesDir(), filename)
