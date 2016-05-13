@@ -18,6 +18,7 @@ class Utilities {
 
     }
 
+
     public fun saveUserdata(usuario: User) {
         val filename: String = oContext.resources.getString(R.string.userDataFileName)
         val file: File = File(this.oContext.getFilesDir(), filename)
@@ -25,6 +26,8 @@ class Utilities {
         val mapper = jacksonObjectMapper()
         mapper.writeValue(outputStream, usuario)
         outputStream.close();
+
+        this.oContext.fileList()
     }
 
     public fun LoadUserdata() : User {
@@ -36,7 +39,12 @@ class Utilities {
         return usuario
     }
 
+    public fun ExistsUserdata() : Boolean {
+        val filename: String = oContext.resources.getString(R.string.userDataFileName)
+        val file: File = File(this.oContext.getFilesDir(), filename);
+        return file.exists();
     /*
+
     public fun saveSharedPreferences(usuario: User) {
         val sharedPref: SharedPreferences = oContext.getSharedPreferences(oContext.resources.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor  = sharedPref.edit()
