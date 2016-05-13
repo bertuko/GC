@@ -12,12 +12,12 @@ class Calculation (){
 
     fun Calculate(): Detail{
         val oConfig : Configuration = Configuration(true)
-        var oContribution : Calculation_Contribution = Calculation_Contribution(oConfig, this.oUser)
         var oIRPF : Calculation_IRPF = Calculation_IRPF(oConfig, this.oUser)
         var oDetail: Detail = Detail()
         var fBrutoPorPaga: Float = this.oUser.ImporteBruto / this.oUser.NumPagas
         var TipoIRPF : Float = 0f
         oIRPF.Calc()
+        var oContribution : Calculation_Contribution = Calculation_Contribution(oConfig, this.oUser)
         if (oUser.FuerzaRetencion == true)
             TipoIRPF = oUser.PorcentajeRetencion
         else
@@ -25,7 +25,8 @@ class Calculation (){
 
         oDetail.CuotaCotizaciones = oContribution.Calc(false)
         oDetail.PagaMensual = fBrutoPorPaga - (oDetail.CuotaCotizaciones + (fBrutoPorPaga * TipoIRPF ) )
-        oDetail.PagaExtra = fBrutoPorPaga - ( fBrutoPorPaga * TipoIRPF )
+        if (oUser.NumPagas>12)
+            oDetail.PagaExtra = fBrutoPorPaga - ( fBrutoPorPaga * TipoIRPF )
 
         return oDetail
     }

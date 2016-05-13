@@ -29,11 +29,11 @@ class Configuration () {
         IRPF.QuantitativeLimits.FamilySituations.add ( Configuration_IRPF_QuantitativeLimits_FamilySituations ( 13696.00f, 14985.00f, 17138.00f ) )
         IRPF.QuantitativeLimits.FamilySituations.add ( Configuration_IRPF_QuantitativeLimits_FamilySituations ( 12000.00f, 12607.00f, 13275.00f ) )
 
-        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 0.00f, 0.00f, 19.00f ) )
-        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 12450.00f, 2365.50f, 24.00f ) )
-        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 20200.00f, 4225.50f, 30.00f ) )
-        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 35200.00f, 8725.50f, 37.00f ) )
-        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 60000.00f, 17901.50f, 45.00f ) )
+        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 0.00f, 0.00f, 0.19f ) )
+        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 12450.00f, 2365.50f, 0.24f ) )
+        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 20200.00f, 4225.50f, 0.3f ) )
+        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 35200.00f, 8725.50f, 0.37f ) )
+        IRPF.QuantitativeLimits.ScalePercentages.add ( Configuration_IRPF_QuantitativeLimits_ScalePercentages ( 60000.00f, 17901.50f, 0.45f ) )
 
         IRPF.Descendants.More2Desc = 600f
         IRPF.Descendants.DescendantMinor3 = 2800.00f

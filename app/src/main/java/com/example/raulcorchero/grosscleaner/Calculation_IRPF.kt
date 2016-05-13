@@ -312,11 +312,13 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
     }
 
     private fun getEmployeeDisability (){
+        INCREGASDISTRA = 0f
         // 1: Disc32, 2: Disc33a65, 3: Disc66
         if((Perceptor.EscalaDiscapacidad == 3) || (Perceptor.EscalaDiscapacidad == 2 && (Perceptor.MovilPerceptor == true))){
             INCREGASDISTRA = ConfigIRPF.DisAmountMore65
         }else{
-            INCREGASDISTRA = ConfigIRPF.DisWithoutHelp
+            if (Perceptor.EscalaDiscapacidad == 2)
+                INCREGASDISTRA = ConfigIRPF.DisWithoutHelp
         }
     }
 

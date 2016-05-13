@@ -27,7 +27,7 @@ class Calculation_Contribution (oConfig:  Configuration, oUser: User){
 
         var Amount: Float
 
-        if (Anual) {
+        if (!Anual) {
             MULT = 1
             Amount = getMonthlyPayAmount (Perceptor.ImporteBruto, Perceptor.NumPagas)
         } else {

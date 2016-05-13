@@ -46,6 +46,13 @@ class Setting : AppCompatActivity() {
         usuario.SituacionFamiliar = this.cmbSituacion.selectedItemPosition
         //usuario.EscalaDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
         usuario.GradoDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
+        when (true) {
+            usuario.GradoDiscapacidad>65 -> usuario.EscalaDiscapacidad = 3
+            usuario.GradoDiscapacidad<65 && usuario.GradoDiscapacidad>32 -> usuario.EscalaDiscapacidad = 2
+            else -> usuario.EscalaDiscapacidad = 1
+        }
+        usuario.GradoDiscapacidad = initalizeValue(this.txtGradoDis.getText().toString()).toInt()
+
         usuario.NumDescendientesMenores3 = initalizeValue(this.txtDescMen3.getText().toString()).toInt()
         usuario.NumDescendientesMayores3 = initalizeValue(this.txtDescend.getText().toString()).toInt()
         usuario.ReduccionVivienda = this.ckbRedViv.isChecked()
