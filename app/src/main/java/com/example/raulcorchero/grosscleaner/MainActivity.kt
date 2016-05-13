@@ -23,8 +23,14 @@ class MainActivity : AppCompatActivity() {
     fun calcular (v: View){
         var u = Utilities(v.context)
         var usuario: User = u.LoadUserdata()
-        usuario.ImporteBruto = this.ImporteBruto.getText().toString().toFloat()
-        usuario.NumPagas = this.NumPagas.getText().toString().toInt()
+        var sImporteBruto: String = this.ImporteBruto.getText().toString().trim()
+        var sNumPagas: String = this.NumPagas.getText().toString().trim()
+
+        if ( sImporteBruto != "") sImporteBruto = "0"
+        if ( sNumPagas != "" ) sNumPagas = "0"
+
+        usuario.ImporteBruto = sImporteBruto.toFloat()
+        usuario.NumPagas = sImporteBruto.toInt()
         u.saveUserdata(usuario)
 
         if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
