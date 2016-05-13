@@ -3,6 +3,7 @@ import android.content.*
 import java.io.*
 import com.fasterxml.jackson.module.kotlin.*
 import com.fasterxml.jackson.module.kotlin.readValue
+import android.app.AlertDialog
 
 class Utilities {
     private var oContext: Context
@@ -18,6 +19,12 @@ class Utilities {
 
     }
 
+    public fun alerta(titulo: String, mensaje: String) {
+
+
+
+
+    }
 
     public fun saveUserdata(usuario: User) {
         val filename: String = oContext.resources.getString(R.string.userDataFileName)
