@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPause () {
+        super.onPause()
         var usuario: User = grabarDatospantalla()
     }
 
