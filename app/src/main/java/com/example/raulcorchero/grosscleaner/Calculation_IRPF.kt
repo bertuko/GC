@@ -47,7 +47,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
 
 
 
-    fun Run ():Float {
+    fun Calc ():Float {
         getDescendant()
         getRetribution()
         getContribution()
@@ -61,15 +61,15 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         return TIPO
     }
 
-    fun getRetribution(){
+    private fun getRetribution(){
         RETRIB = Perceptor.ImporteBruto
     }
 
-    fun getContribution (){
+    private fun getContribution (){
         COTIZACIONES = CalcContribution.Calc(true)
     }
 
-    fun getDeductions(){
+    private fun getDeductions(){
         getOtherExpenses()
         getExpensesDeductions()
         getNetRetribution()
@@ -78,7 +78,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         getMinPersonalFamiliar()
     }
 
-    fun getMinPersonalFamiliar(){
+    private fun getMinPersonalFamiliar(){
         getMinTaxpayer()
         getMinDescendens()
         getMinDisability()
@@ -86,20 +86,20 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         MINPERFA = MINCON+MINDES+MINDIS+MINAS
     }
 
-    fun getMinDescendens(){
+    private fun getMinDescendens(){
         getMinDesc25()
         getMinDesc3()
         MINDES = MINDESG + MINDES3
     }
 
-    fun getMinDisability(){
+    private fun getMinDisability(){
         MINDISC = 0f
         getMinDisabilityTaxpayer()
         getMinDisAsist()
         MINDISC = ASISPER + DISPER
     }
 
-    fun getMinDisabilityTaxpayer() {
+    private fun getMinDisabilityTaxpayer() {
         when (Perceptor.EscalaDiscapacidad ) {
             3 -> DISPER = ConfigIRPF.MinDis65
             2 -> DISPER = ConfigIRPF.MinDis3365
@@ -107,31 +107,31 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getMinDisAsist() {
+    private fun getMinDisAsist() {
         ASISPER = 0f
         if (Perceptor.EscalaDiscapacidad == 3 || (Perceptor.EscalaDiscapacidad == 2 && Perceptor.MovilPerceptor) ) {
             ASISPER = ConfigIRPF.MinAsisPer
         }
     }
 
-    fun getReductionRetributionJob(){
+    private fun getReductionRetributionJob(){
         getDeductionGeneral()
         getNetRetributionReduced()
     }
 
-    fun getOtherExpenses(){
+    private fun getOtherExpenses(){
         getGeneralExpenses()
         getEmployeeDisability()
         getTotalOtherExpenses()
 
     }
 
-    fun getMinTaxpayer(){
+    private fun getMinTaxpayer(){
         MINPER = ConfigIRPF.MinTaxpayer
         MINCON = MINPER
     }
 
-    fun getMinDesc25(){
+    private fun getMinDesc25(){
         MINDESG = 0f
         var topDesc: Int = 16
         if (Perceptor.NumDescendientesMayores3<topDesc){
@@ -148,7 +148,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         MINDESG = getRound(MINDESG)
     }
 
-    fun getMinDesc3(){
+    private fun getMinDesc3(){
         MINDES3 = 0f
         var topDesc: Int = Perceptor.NumDescendientesMayores3
         for (i in 1..topDesc){
@@ -157,19 +157,19 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         MINDES3 = getRound(MINDES3)
     }
 
-    fun getMinoPago () {
+    private fun getMinoPago () {
         if (RETRIB < ConfigIRPF.HomeDeductionsMaxAmount && Perceptor.ReduccionVivienda == true)
             MINOPAGO = getRound(Perceptor.ImporteBruto * ConfigIRPF.HomeDeductionPercentage)
         else
             MINOPAGO = 0f
     }
 
-    fun getRetention(){
+    private fun getRetention(){
         getMinoPago()
         getPercRetention()
     }
 
-    fun getPercRetention (){
+    private fun getPercRetention (){
         var dif: Float = 0f
         dif = CUOTA-MINOPAGO
         if (dif<0) {
@@ -179,13 +179,13 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         TIPO = getRound(TIPO)
     }
 
-    fun getRound (Importe :Float):Float{
+    private fun getRound (Importe :Float):Float{
         var ImporteInt: Int = Math.round(Importe*100)
         var ImporteFloat: Float = (ImporteInt/100f)
         return ImporteFloat
     }
 
-    fun getApliLimit43 (){
+    private fun getApliLimit43 (){
 
         var Limit :Float = 0.00f;
         if (RETRIB <= ConfigIRPF.AnnualLimitMax) {
@@ -225,7 +225,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getExent(): Boolean {
+    private fun getExent(): Boolean {
         var Exento:Boolean = false;
         if (RETRIB <= IRPFQLimits.FamilySituations.get(1).Desc2){
             when (Perceptor.SituacionFamiliar) {
@@ -271,7 +271,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
             return false
     }
 
-    fun getQuota (){
+    private fun getQuota (){
         CUOTA1 = Scale(BASE, 1)
         CUOTA2 = Scale(MINPERFA, 1)
         if (CUOTA1 > CUOTA2){
@@ -282,7 +282,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun Scale (Amount: Float, Index: Int): Float {
+    private fun Scale (Amount: Float, Index: Int): Float {
         var ResultCuota: Float = 0.00f;
         var Dif: Float = 0.00f;
         var ScaleQuota: Float = 0.00f;
@@ -298,7 +298,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         return  ResultCuota
     }
 
-    fun getBase(){
+    private fun getBase(){
         REDU = PENSION+HIJOS+DESEM+CONYUGE
         if (RNTREDU>REDU){
             BASE = RNTREDU-REDU
@@ -307,11 +307,11 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getGeneralExpenses (){
+    private fun getGeneralExpenses (){
         GASTOSGEN = ConfigIRPF.ExpensesGeneral
     }
 
-    fun getEmployeeDisability (){
+    private fun getEmployeeDisability (){
         // 1: Disc32, 2: Disc33a65, 3: Disc66
         if((Perceptor.EscalaDiscapacidad == 3) || (Perceptor.EscalaDiscapacidad == 2 && (Perceptor.MovilPerceptor == true))){
             INCREGASDISTRA = ConfigIRPF.DisAmountMore65
@@ -320,7 +320,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getTotalOtherExpenses () {
+    private fun getTotalOtherExpenses () {
         OTRASGASTOS = GASTOSGEN+INCREGASDISTRA+INCREGASMOVIL
         if ((RETRIB-COTIZACIONES) < 0){
             OTRASGASTOS = 0.00f
@@ -330,18 +330,18 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getExpensesDeductions(){
+    private fun getExpensesDeductions(){
         GASTOS = COTIZACIONES+OTRASGASTOS
     }
 
-    fun getNetRetribution (){
+    private fun getNetRetribution (){
         RNT = RETRIB-(IRREGULAR1+IRREGULAR2+COTIZACIONES)
         if (RNT<0) {
             RNT = 0.00f
         }
     }
 
-    fun getDeductionGeneral(){
+    private fun getDeductionGeneral(){
         if(RNT<=ConfigIRPF.BaseRedJobMax){
             RED20 = ConfigIRPF.RedJobMax
         }else{
@@ -353,14 +353,14 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getNetRetributionReduced (){
+    private fun getNetRetributionReduced (){
         RNTREDU = RNT - (OTRASGASTOS + RED20)
         if (RNTREDU < 0){
             RNTREDU = 0f
         }
     }
 
-    fun getDescendentReduction () {
+    private fun getDescendentReduction () {
 
         if (NUMDES>2){
             HIJOS = IRPFDesc.More2Desc
@@ -369,7 +369,7 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
         }
     }
 
-    fun getDescendant(){
+    private fun getDescendant(){
         NUMDES = Perceptor.NumDescendientesMayores3 + Perceptor.NumDescendientesMenores3
     }
 

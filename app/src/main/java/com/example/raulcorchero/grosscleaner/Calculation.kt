@@ -17,6 +17,7 @@ class Calculation (){
         var oDetail: Detail = Detail()
         var fBrutoPorPaga: Float = this.oUser.ImporteBruto / this.oUser.NumPagas
         var TipoIRPF : Float = 0f
+        oIRPF.Calc()
         if (oUser.FuerzaRetencion == true)
             TipoIRPF = oUser.PorcentajeRetencion
         else
