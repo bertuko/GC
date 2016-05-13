@@ -71,16 +71,11 @@ class Setting : AppCompatActivity() {
         if(this.tbIRPF.isChecked()) {
             this.txtIRPFMan.setEnabled(true)
             this.cmbSituacion.setEnabled(false)
-            this.txtGradoDis.setText("")
             this.txtGradoDis.setEnabled(false)
-            this.txtDescend.setText("")
             this.txtDescend.setEnabled(false)
-            this.txtDescMen3.setText("")
             this.txtDescMen3.setEnabled(false)
-            this.ckbRedViv.setChecked(false)
             this.ckbRedViv.setEnabled(false)
         }else{
-            this.txtIRPFMan.setText("")
             this.txtIRPFMan.setEnabled(false)
             this.cmbSituacion.setEnabled(true)
             this.txtGradoDis.setEnabled(true)
@@ -93,15 +88,15 @@ class Setting : AppCompatActivity() {
 
     private fun cargarDatos(usuario: User){
         if (usuario.FuerzaRetencion) {
+            this.tbIRPF.setChecked(true)
             this.txtIRPFMan.setEnabled(true)
             this.cmbSituacion.setEnabled(false)
             this.txtGradoDis.setEnabled(false)
             this.txtDescend.setEnabled(false)
             this.txtDescMen3.setEnabled(false)
-            this.ckbRedViv.setChecked(false)
             this.ckbRedViv.setEnabled(false)
         }else{
-            this.txtIRPFMan.setEnabled(false)
+            this.tbIRPF.setChecked(false)
             this.txtIRPFMan.setEnabled(false)
             this.cmbSituacion.setEnabled(true)
             this.txtGradoDis.setEnabled(true)
@@ -109,6 +104,8 @@ class Setting : AppCompatActivity() {
             this.txtDescMen3.setEnabled(true)
             this.ckbRedViv.setEnabled(true)
         }
+
+        this.txtIRPFMan.setText(usuario.PorcentajeRetencion.toString())
         this.txtHoras.setText(usuario.Horas.toString())
         this.cmbSituacion.setSelection(usuario.SituacionFamiliar)
         this.txtGradoDis.setText(usuario.GradoDiscapacidad.toString())
