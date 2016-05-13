@@ -30,8 +30,15 @@ class Utilities {
     }
 
     public fun ExistsUserdata() : Boolean {
+        var ret: Boolean = false
         val filename: String = oContext.resources.getString(R.string.userDataFileName)
-        val file: File = File(this.oContext.getFilesDir(), filename);
-        return file.exists();
+        val file: File = java.io.File (this.oContext.getFilesDir(), filename);
+        if (file.exists()) {
+            var fis: FileInputStream = this.oContext.openFileInput(filename)
+            var isr: InputStreamReader = InputStreamReader(fis)
+            var contenido: String = isr.readText()
+            ret = !(contenido == "")
+        }
+        return ret
     }
 }
