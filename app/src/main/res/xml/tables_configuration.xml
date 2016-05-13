@@ -9,10 +9,10 @@
             </FamilySituations>
             <ScalePercentage>
                 <Scale Code="1" Base="0.00" Withholding="0.00" Percentage="19"/>
-                <Scale Code="2" Base="12450.00" Withholding="2365.50" Percentage="24"/>
-                <Scale Code="3" Base="20200.00" Withholding="4225.50" Percentage="30"/>
-                <Scale Code="4" Base="35200.00" Withholding="8725.50" Percentage="37"/>
-                <Scale Code="5" Base="60000.00" Withholding="17901.50" Percentage="45"/>
+                <Scale Code="2" Base="12450.00" Withholding="2365.50" Percentage="0.24"/>
+                <Scale Code="3" Base="20200.00" Withholding="4225.50" Percentage="0.30"/>
+                <Scale Code="4" Base="35200.00" Withholding="8725.50" Percentage="0.37"/>
+                <Scale Code="5" Base="60000.00" Withholding="17901.50" Percentage="0.45"/>
             </ScalePercentage>
         </QuantitativeLimits>
         <Descendants More2Desc="600" DescendantMinor3="2800.00">
