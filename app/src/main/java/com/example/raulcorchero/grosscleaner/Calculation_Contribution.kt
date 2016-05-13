@@ -5,6 +5,8 @@ import kotlin.reflect.jvm.internal.impl.descriptors.impl.CompositePackageFragmen
 /**
  * Created by raul.palomares on 12/05/2016.
  * Broken by raul.corchero on 13/05/2016.
+ * Fixed by david.negrete on 13/05/2016
+ * Supervised by albert.baron on 13/05/2016
  */
 class Calculation_Contribution (oConfig:  Configuration){
     var Perceptor: User = User();
