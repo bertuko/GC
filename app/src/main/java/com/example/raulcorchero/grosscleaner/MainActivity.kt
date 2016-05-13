@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     }
 
     fun calcular (v: View){
@@ -27,7 +29,10 @@ class MainActivity : AppCompatActivity() {
             c.Calculate()
         } else {
             //mensaje de aviso... Hay que introducir importes o si no...
-
+            alert("Oye", "¿De que vas?") {
+                positiveButton("Yes") { }
+                negativeButton("No") { }
+            }.show()
         }
 
     }

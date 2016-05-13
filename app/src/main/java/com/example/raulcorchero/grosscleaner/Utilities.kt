@@ -3,7 +3,6 @@ import android.content.*
 import java.io.*
 import com.fasterxml.jackson.module.kotlin.*
 import com.fasterxml.jackson.module.kotlin.readValue
-import android.app.AlertDialog
 
 class Utilities {
     private var oContext: Context
@@ -16,13 +15,6 @@ class Utilities {
         var oXML = oContext.resources.openRawResource (R.xml.tables_configuration)
 
         var p = 0
-
-    }
-
-    public fun alerta(titulo: String, mensaje: String) {
-
-
-
 
     }
 
