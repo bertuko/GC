@@ -53,26 +53,29 @@ class MainActivity : AppCompatActivity() {
 
         u.saveUserdata(usuario)
 
-        if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
+        if ((usuario.ImporteBruto != 0f && usuario.ImporteBruto < 1000000 ) && (usuario.NumPagas != 0)){
             // Llamar al calculo
             ShowDataInActivity ( (Calculation(usuario)).Calculate(), usuario )
         } else {
             var msg: String = ""
-            if (usuario.ImporteBruto != 0f ) {
+            if (usuario.ImporteBruto == 0f ) {
                 msg = "Debe introducir un Salario Bruto"
-            } else if (usuario.NumPagas < 12){
-                msg = "El número de pagas debe ser superior a 12"
+            } else {
+                if (usuario.ImporteBruto > 999999) {
+                    msg = "Debe introducir un Salario Bruto inferior a 1.000.000€"
+                } else if (usuario.NumPagas < 12) {
+                    msg = "El número de pagas debe ser superior o igual a 12"
+                }
             }
             showAlert("Atención!", msg)
         }
-
     }
 
     private fun ShowDataInActivity (oDetails: Detail, oUser: User) {
-        this.ImporteBruto.setText( oUser.ImporteBruto.toString() )
-        this.NumPagas.setText ( oUser.NumPagas.toString() )
-        this.txtNeto.setText( oDetails.PagaMensual.toString() )
-        this.txtExtra.setText( oDetails.PagaExtra.toString() )
+        this.ImporteBruto.setText( oUser.ImporteBruto.toInt().toString() )
+        this.NumPagas.setText ( oUser.NumPagas.toInt().toString() )
+        this.txtNeto.setText( oDetails.PagaMensual.toInt().toString() )
+        this.txtExtra.setText( oDetails.PagaExtra.toInt().toString() )
     }
 
     fun initalizeValue (datastring: String): String{
