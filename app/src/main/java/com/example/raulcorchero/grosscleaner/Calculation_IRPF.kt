@@ -27,7 +27,17 @@ class Calculation_IRPF () {
     var DESEM: Float = 0.00f;
     var CONYUGE: Float = 0.00f;
     var RNTREDU: Float = 0.00f;
-
+    var GASTOSGEN: Float = 0.00f;
+    var INCREGASDISTRA: Float = 0.00f;
+    var INCREGASMOVIL: Float = 0.00f;
+    var OTRASGASTOS: Float = 0.00f;
+    var GASTOS: Float = 0.00f;
+    var RNT: Float = 0.00f;
+    var RETRIB: Float = 0.00f;
+    var IRREGULAR1: Float = 0.00f;
+    var IRREGULAR2: Float = 0.00f;
+    var COTIZACIONES: Float = 0.00f;
+    var RED20 : Float = 0.00f;
 
     fun getMinoPago () {
         if (Perceptor.ImporteBruto < ConfigIRPF.HomeDeductionsMaxAmount && Perceptor.ReduccionVivienda == true)
@@ -161,5 +171,43 @@ class Calculation_IRPF () {
             BASE=0.00f
         }
     }
+    fun getGeneralExpenses (){
+        GASTOSGEN = ConfigIRPF.ExpensesGeneral
+    }
 
+    fun getEmployeeDisability (){
+        if(Perceptor.EscalaDiscapacidad == Discapacidad.Disc66 or (Perceptor.EscalaDiscapacidad == Discapacidad.Disc33a65 and Perceptor.MovilPer == true)){
+            INCREGASDISTRA = ConfigIRPF.DisAmountMore65
+        }else{
+            INCREGASDISTRA = ConfigIRPF.DisWithoutHelp
+        }
+    }
+    fun getTotalOtherExpenses () {
+        OTRASGASTOS = GASTOSGEN+INCREGASDISTRA+INCREGASMOVIL
+        if ((Perceptor.ImporteBruto-COTIZACIONES) < 0){
+            OTRASGASTOS = 0.00f
+        }
+        if (OTRASGASTOS > (Perceptor.ImporteBruto - COTIZACIONES)){
+            OTRASGASTOS = Perceptor.ImporteBruto - COTIZACIONES
+        }
+    }
+    fun getDeductions(){
+        GASTOS = COTIZACIONES+OTRASGASTOS
+    }
+    fun getNetRetribution (){
+        RNT = RETRIB-(IRREGULAR1+IRREGULAR2+COTIZACIONES)
+        if (RNT<0) {
+            RNT = 0.00f
+        }
+    }
+    fun getDeductionGeneral(){
+        if(RNT<=ConfigIRPF.BaseRedJobMax){
+            RED20 = ConfigIRPF.RedJobMax
+        }else{
+            if (RNT<=ConfigIRPF.BaseRedJobMin){
+                RED20 = (ConfigIRPF.RedJobMin - (ConfigIRPF.CoefRedJob * (RNT-ConfigIRPF.RedJobMax)))
+            }else{
+            RED20 = 0.00f
+        }
+    }
 }

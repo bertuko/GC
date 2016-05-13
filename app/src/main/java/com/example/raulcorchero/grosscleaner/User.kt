@@ -9,7 +9,8 @@ class User () {
     var FuerzaRetencion: Boolean = false
     var PorcentajeRetencion: Int = 0
     var ReduccionVivienda: Boolean = false
-
+    var EscalaDiscapacidad: Discapacidad = Discapacidad.Disc32
+    var MovilPer: Boolean = false
     // Datos paga
     var ImporteBruto: Float = 0f
     var NumPagas: Int = 12
