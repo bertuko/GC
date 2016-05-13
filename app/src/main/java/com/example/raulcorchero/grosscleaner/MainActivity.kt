@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         var sImporteBruto: String = this.ImporteBruto.getText().toString().trim()
         var sNumPagas: String = this.NumPagas.getText().toString().trim()
 
-        if ( sImporteBruto != "") sImporteBruto = "0"
-        if ( sNumPagas != "" ) sNumPagas = "0"
+        if ( sImporteBruto == "") sImporteBruto = "0"
+        if ( sNumPagas == "" ) sNumPagas = "0"
 
         usuario.ImporteBruto = sImporteBruto.toFloat()
         usuario.NumPagas = sImporteBruto.toInt()
