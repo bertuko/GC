@@ -40,8 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         if ((usuario.ImporteBruto != 0f ) && (usuario.NumPagas != 0)){
             // Llamar al calculo
-            val c: Calculation = Calculation(usuario)
-            c.Calculate()
+            ShowDataInActivity ( (Calculation(usuario)).Calculate(), usuario )
         } else {
             var msg: String = ""
             if (usuario.ImporteBruto != 0f ) {
@@ -52,6 +51,13 @@ class MainActivity : AppCompatActivity() {
             showAlert("Atención!", msg)
         }
 
+    }
+
+    private fun ShowDataInActivity (oDetails: Detail, oUser: User) {
+        this.ImporteBruto.setText( oUser.ImporteBruto.toString() )
+        this.NumPagas.setText ( oUser.NumPagas.toString() )
+        this.txtNeto.setText( oDetails.PagaMensual.toString() )
+        this.txtExtra.setText( oDetails.PagaExtra.toString() )
     }
 
     fun initalizeValue (datastring: String): String{
