@@ -1,6 +1,7 @@
 package com.example.raulcorchero.grosscleaner
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -30,5 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    fun viewSettings(v: View){
+        val intent = Intent(this@MainActivity, Setting::class.java)
+        startActivity(intent)
     }
 }
