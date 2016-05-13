@@ -1,10 +1,8 @@
 package com.example.raulcorchero.grosscleaner
 
-data class MyStateObject(val name: String, val age: Int)
-
-class User {
-
-    var SituacionFamiliar: TipoSituacionFamiliar = TipoSituacionFamiliar.Sit3
+class User () {
+    var PrimeraCarga: Boolean = true
+    var SituacionFamiliar: Int = 3
     var GradoDiscapacidad: Int = 0
     var NumDescendientesMenores3: Int = 0
     var NumDescendientesMayores3: Int = 0
@@ -16,27 +14,17 @@ class User {
     var ImporteBruto: Float = 0f
     var NumPagas: Int = 12
 
-    constructor() {
-        if (!esNuevoUser()) {
-            LoadUser()
-        }
-    }
-
-    private fun esNuevoUser(): Boolean {
-        return true
-    }
-
-    private fun LoadUser(): User {
-        var Usuario: User = User()
-        var u: Utilities
-        //Usuario = u.ReadXMLFile("asdads")
-        return Usuario
-    }
-
-    fun grabarUser(): Boolean {
-
-
-        return true
-    }
-
 }
+
+//data class DataUser (
+//        var SituacionFamiliar: TipoSituacionFamiliar,
+//        var GradoDiscapacidad: Int,
+//        var NumDescendientesMenores3: Int,
+//        var NumDescendientesMayores3: Int,
+//        var FuerzaRetencion: Boolean,
+//        var PorcentajeRetencion: Int,
+//        var ReduccionVivienda: Boolean,
+//        // Datos paga
+//        var ImporteBruto: Float,
+//        var NumPagas: Int
+//)

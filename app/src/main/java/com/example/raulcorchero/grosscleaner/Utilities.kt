@@ -1,12 +1,8 @@
 package com.example.raulcorchero.grosscleaner
 import android.content.*
-import android.content.res.XmlResourceParser
 import java.io.*
 import com.fasterxml.jackson.module.kotlin.*
-import org.w3c.dom.Document
-import org.xmlpull.v1.XmlPullParser
-import javax.xml.parsers.DocumentBuilder
-import javax.xml.parsers.DocumentBuilderFactory
+import com.fasterxml.jackson.module.kotlin.readValue
 
 class Utilities {
     private var oContext: Context
@@ -16,57 +12,59 @@ class Utilities {
     }
 
     fun GetConfiguration () {
-        var factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()
-        var builder: DocumentBuilder = factory.newDocumentBuilder()
-        var resourceName: String = oContext.resources.getResourceName(R.xml.tables_configuration)
-        var sXMLFile: String = oContext.resources.getString(R.xml.tables_configuration)
-
-        var oFile: File = oContext.classLoader.getResourceAsStream()
-
-        Cla
-
-/*
-        var oInputStream : InputStream = oContext.resources.openRawResource(R.xml.tables_configuration)
-        var oXML: Document = builder.parse (oInputStream)
-*/
-
-        /*
-        var oInputStream: File = oContext.resources.openRawResource(R.xml.tables_configuration)
-        var oXML: Document = builder.parse (oInputStream)
-*/
-        //var oFile: File = oContext.resources.getXml(resourceName)
-//        var oFile : File = ClassLoader.getSystemResources(resourceName)
-//        var oXML: Document = builder.parse (oFile)
-
-
-
-//        var sXML: Document = builder.parse(File(sXMLFile))
+        var oXML = oContext.resources.openRawResource (R.xml.tables_configuration)
 
         var p = 0
 
-/*
-        var eventType : int = oXML.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-
-        }
-*/
     }
 
     public fun saveUserdata(usuario: User) {
-        val filename: String = R.string.userDataFileName.toString()
-        val file: File = File(this.oContext.getFilesDir(), filename)
-        var outputStream: FileOutputStream = this.oContext.openFileOutput(filename, Context.MODE_PRIVATE);
-        val mapper = jacksonObjectMapper()
-        mapper.writeValue(outputStream, usuario)
-        outputStream.close();
+        //val filename: String = oContext.resources.getString(R.string.userDataFileName)
+        //val file: File = File(this.oContext.getFilesDir(), filename)
+        //var outputStream: FileOutputStream = this.oContext.openFileOutput(filename, Context.MODE_PRIVATE);
+        //val mapper = jacksonObjectMapper()
+        //mapper.writeValue(outputStream, usuario)
+        //outputStream.close();
+        val sharedPref: SharedPreferences = oContext.getSharedPreferences(oContext.resources.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor  = sharedPref.edit()
+        editor.putBoolean("PrimeraCarga", false)
+        editor.putInt("GradoDiscapacidad", usuario.GradoDiscapacidad)
+        editor.putInt("NumDescendientesMayores3", usuario.NumDescendientesMayores3)
+        editor.putInt("NumDescendientesMenores3", usuario.NumDescendientesMenores3)
+        editor.putInt("NumPagas", usuario.NumPagas)
+        editor.putInt("PorcentajeRetencion", usuario.PorcentajeRetencion)
+        editor.putBoolean("FuerzaRetencion", usuario.FuerzaRetencion)
+        editor.putFloat("ImporteBruto", usuario.ImporteBruto)
+        editor.putBoolean("ReduccionVivienda", usuario.ReduccionVivienda)
+        editor.putInt("SituacionFamiliar", usuario.SituacionFamiliar)
+        editor.putBoolean("FuerzaRetencion", usuario.FuerzaRetencion)
+        editor.commit()
+
     }
 
     public fun LoadUserdata() : User {
-        val filename: String = R.string.userDataFileName.toString()
-        var fis: FileInputStream = this.oContext.openFileInput(filename)
-        var isr: InputStreamReader = InputStreamReader(fis)
-        val mapper = jacksonObjectMapper()
-        var usuario: User = mapper.readValue<User>(isr.readText())
+//        val filename: String = oContext.resources.getString(R.string.userDataFileName)
+//        var fis: FileInputStream = this.oContext.openFileInput(filename)
+//        var isr: InputStreamReader = InputStreamReader(fis)
+//        val mapper = jacksonObjectMapper()
+//        //var usuario: User = mapper.readValue(isr.readText(), User)
+//        val json: String =  isr.readText()
+//        var usuario: DataUser = mapper.readValue<DataUser>(json)
+//        return usuario
+        var usuario: User = User()
+        val sharedPref: SharedPreferences = oContext.getSharedPreferences(oContext.resources.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor  = sharedPref.edit()
+        usuario.PrimeraCarga = sharedPref.getBoolean("PrimeraCarga",true)
+        usuario.GradoDiscapacidad = sharedPref.getInt("GradoDiscapacidad",0)
+        usuario.NumDescendientesMayores3 = sharedPref.getInt("NumDescendientesMayores3",0)
+        usuario.NumDescendientesMenores3 = sharedPref.getInt("NumDescendientesMenores3",0)
+        usuario.NumPagas = sharedPref.getInt("NumPagas", 12)
+        usuario.PorcentajeRetencion = sharedPref.getInt("PorcentajeRetencion",0)
+        usuario.FuerzaRetencion = sharedPref.getBoolean("FuerzaRetencion", false)
+        usuario.ImporteBruto = sharedPref.getFloat("ImporteBruto", 0f)
+        usuario.ReduccionVivienda = sharedPref.getBoolean("ReduccionVivienda", false)
+        usuario.SituacionFamiliar = sharedPref.getInt("SituacionFamiliar", 3)
+        usuario.FuerzaRetencion = sharedPref.getBoolean("FuerzaRetencion", false)
         return usuario
     }
 }
