@@ -283,18 +283,12 @@ class Calculation_IRPF ( oConfig: Configuration, oUser: User ) {
     }
 
     private fun Scale (Amount: Float, Index: Int): Float {
-        var ResultCuota: Float = 0.00f;
-        var Dif: Float = 0.00f;
-        var ScaleQuota: Float = 0.00f;
-        var DifQuota: Float = 0.00f;
-        if (Amount>IRPFQLimits.ScalePercentages.get(Index).Base){
-            ResultCuota = Scale(Amount,(Index+1))
-        }else{
-            ScaleQuota = IRPFQLimits.ScalePercentages.get(Index-1).Withholding
-            Dif = Amount-IRPFQLimits.ScalePercentages.get(Index-1).Base
-            DifQuota = Dif * IRPFQLimits.ScalePercentages.get(Index-1).Percentage
-            ResultCuota = ScaleQuota+DifQuota
-        }
+        var Scale = IRPFQLimits.ScalePercentages.filter({it.Base <= Amount}).sortedBy{it.Base}.last()
+
+        var ScaleQuota: Float = Scale.Withholding
+        var Dif: Float = Amount - Scale.Base
+        var DifQuota: Float = Dif * Scale.Percentage
+        var ResultCuota: Float = ScaleQuota + DifQuota
         return  ResultCuota
     }
 
